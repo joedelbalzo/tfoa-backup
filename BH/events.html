@@ -1,0 +1,144 @@
+<!-- Hello, Ben! Scroll down to approximately line 40 for instructions
+on where to enter event information, as well as how to markup text to include italics, 
+bold text, and hyperlinks. 
+-->
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:wght@300;350;400;500;display=swap" rel="stylesheet" />
+</head>
+
+<script>
+  function generateRandomID() {
+    return "unique-" + Math.floor(Math.random() * 1000000000);
+  }
+  function applyDynamicStyles(randomID) {
+    const style = document.createElement("style");
+    document.head.appendChild(style);
+    style.sheet.insertRule(
+      `
+.${randomID} {
+  width: calc(100%-6rem);font-family: 'Merriweather', serif;font-size: calc(1rem + 1vw);border-radius: 1rem;margin: 0 auto;padding: 2rem 3rem;display: flex;}
+`,
+      0
+    );
+    style.sheet.insertRule(
+      `
+.${randomID} > .left-div {
+flex: 1;display: flex;flex-direction: column;margin-right: 12px;}`,
+      1
+    );
+    style.sheet.insertRule(`.${randomID} > .right-div {flex: 2;font-weight: 100;font-size: calc(1rem + .3vw);color: #fff;} `, 2);
+    style.sheet.insertRule(`.${randomID} > .left-div > #date {color: #EDD580;font-weight: 500;font-size: calc(1rem + 1vw);} `, 3);
+    style.sheet.insertRule(`.${randomID} > .left-div > #time {color: #EDD580;font-weight: 500;font-size: 1rem;} `, 4);
+    style.sheet.insertRule(
+      `.${randomID} > .left-div > #location,.${randomID} > .left-div >#invite-or-virtual{color: #fff;font-weight: 300;font-size: calc(1rem + .3vw);} `,
+      5
+    );
+    style.sheet.insertRule(
+      ` @media (max-width: 600px) {.${randomID} {flex-wrap: wrap;flex-direction: column;}.${randomID} > .left-div{margin-bottom: 2rem;} }`,
+      style.sheet.cssRules.length
+    );
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    const randomID = generateRandomID();
+    const container = document.querySelector(".container8675309");
+    if (container) {
+      container.className = randomID;
+      applyDynamicStyles(randomID);
+    } else {
+      console.log("Containernotfound");
+    }
+  });
+</script>
+
+<style>
+  .coi9263jsdnaosuiedfn {
+    background-color: #4a1d1399;
+    outline: 2pxsolid#4A1D1340;
+    border-radius: 50px;
+    position: relative;
+    mix-blend-mode: screen;
+    box-shadow: 008px2px#EDD58020;
+    margin: 0auto;
+  }
+  .coi9263jsdnaosuiedfn::before {
+    content: "";
+    position: absolute;
+    mix-blend-mode: screen;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+    border-radius: inherit;
+    outline: 5pxsolid#EDD58040;
+    filter: blur(2px);
+  }
+  .coi9263jsdnaosuiedfn > div > div > span > a {
+    z-index: 1;
+    position: relative;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+</style>
+
+<!-- 
+*****************************************
+*****************************************
+This is where you add your details!
+Ignore everything with a <div> tag, and just change things with a <span> tag. 
+
+Each span has a generic ID that matches most of your events: a date, time, location, 
+invite/virtual, a description, and video link. If you don't have specific details,
+feel free to leave a span blank! It won't mess up the design.
+
+When you're done, hit save. This kind of code doesn't reload automatically
+like regular Squarespace Drag and Drop, so I like having an editing tab
+open here and then a live tab open so you can refresh and check it out. 
+
+Here’s some HTML markup you might want. 
+Bold: <strong>text goes here</strong>
+Italics: <i>text goes here</i>
+Hyperlink: <a href="put the full link here" target="_blank">text of the link goes here</a>
+Line Break: <br> 
+(Note: hitting the enter button in code DOES NOT break the line the way it does in Word.)
+
+Note that each piece of markup (except Line Break) has an opening tag <> and a closing tag </>.
+Be careful here -- sometimes Squarespace likes to autofill your beginning and ending tags,
+so if something's not working right, that's a great place to start troubleshooting.
+*****************************************
+*****************************************
+-->
+
+<div class="coi9263jsdnaosuiedfn">
+  <div class="container8675309">
+    <div class="left-div">
+      <span id="date">
+        <!-- INSERT DATE BELOW -->
+        March 27, 2024
+      </span>
+      <span id="time">
+        <!-- INSERT TIME BELOW -->
+      </span>
+      <span id="location">
+        <!-- INSERT LOCATION BELOW -->
+        University of Puget Sound School of Education and African American Studies Department
+      </span>
+      <span id="invite-or-virtual">
+        <!-- INSERT ANY OTHER DETAILS BELOW -->
+        By Invitation
+      </span>
+    </div>
+    <div class="right-div">
+      <span id="description">
+        <!-- INSERT DESCRIPTION BELOW -->
+        Benjamin Herold in conversation with Renee Simms.
+      </span>
+      <span class="full-video" style="color: #edd580">
+        <!-- INSERT VIDEO LINK BELOW -->
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- and that's it! hit save! -->
