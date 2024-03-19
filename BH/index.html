@@ -1,9 +1,6 @@
-<!-- all of the code for the new events page -->
-
-<!-- Hello, Ben! The arrows and hyphens signify a comment in html, 
-so scroll down to the next set of comments for instructions
-on where to enter event information, as well as how to markup text to make
-it italic or bold, as well as how to insert hyperlinks. 
+<!-- Hello, Ben! Scroll down to approximately line 40 for instructions
+on where to enter event information, as well as how to markup text to include italics, 
+bold text, and hyperlinks. 
 -->
 
 <head>
@@ -14,93 +11,26 @@ it italic or bold, as well as how to insert hyperlinks.
   function generateRandomID() {
     return "unique-" + Math.floor(Math.random() * 1000000000);
   }
-
   function applyDynamicStyles(randomID) {
     const style = document.createElement("style");
     document.head.appendChild(style);
     style.sheet.insertRule(
-      `
-      .${randomID} {
-        width: calc(100%-6rem);
-        font-family: 'Merriweather', serif;
-        font-size: calc(1rem + 1vw);
-        border-radius: 1rem;
-        margin: 0 auto;
-        padding: 2rem 3rem;
-        display: flex;
-        }
-  `,
+      `.${randomID} {width: calc(100%-6rem);font-family: 'Merriweather', serif;font-size: calc(1rem + 1vw);border-radius: 1rem;margin: 0 auto;padding: 2rem 3rem;display: flex;}`,
       0
     );
+    style.sheet.insertRule(`.${randomID} > .left-div {flex: 1;display: flex;flex-direction: column;margin-right: 12px;}`, 1);
+    style.sheet.insertRule(`.${randomID} > .right-div {flex: 2;font-weight: 100;font-size: calc(1rem + .3vw);color: #fff;} `, 2);
+    style.sheet.insertRule(`.${randomID} > .left-div > #date {color: #EDD580;font-weight: 500;font-size: calc(1rem + 1vw);} `, 3);
+    style.sheet.insertRule(`.${randomID} > .left-div > #time {color: #EDD580;font-weight: 500;font-size: 1rem;} `, 4);
     style.sheet.insertRule(
-      `
-      .${randomID} > .left-div {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        margin-right: 12px;
-        }
-  `,
-      1
-    );
-    style.sheet.insertRule(
-      `
-      .${randomID} > .right-div {
-        flex: 2;
-        font-weight: 100;
-        font-size: calc(1rem + .3vw);
-        color: #fff;
-        }
-    `,
-      2
-    );
-    style.sheet.insertRule(
-      `
-      .${randomID} > .left-div > #date {
-        color: #EDD580;
-        font-weight: 500;
-        font-size: calc(1rem + 1vw);
-      }
-    `,
-      3
-    );
-    style.sheet.insertRule(
-      `
-      .${randomID} > .left-div > #time {
-        color: #EDD580;
-        font-weight: 500;
-        font-size: 1rem;
-        }  
-    `,
-      4
-    );
-    style.sheet.insertRule(
-      `
-     .${randomID} > .left-div > #location,
-     .${randomID} > .left-div >#invite-or-virtual  {
-        color: #fff;
-        font-weight: 300;
-        font-size: calc(1rem + .3vw);
-        }
-    `,
+      `.${randomID} > .left-div > #location,.${randomID} > .left-div >#invite-or-virtual{color: #fff;font-weight: 300;font-size: calc(1rem + .3vw);} `,
       5
     );
     style.sheet.insertRule(
-      `
-    @media (max-width: 600px) {
-      .${randomID} {
-        flex-wrap: wrap;
-        flex-direction: column;
-      }
-      .${randomID} > .left-div{
-        margin-bottom: 2rem;
-      }
-    }
-  `,
+      ` @media (max-width: 600px) {.${randomID} {flex-wrap: wrap;flex-direction: column;}.${randomID} > .left-div{margin-bottom: 2rem;} }`,
       style.sheet.cssRules.length
     );
   }
-
   document.addEventListener("DOMContentLoaded", function () {
     const randomID = generateRandomID();
     const container = document.querySelector(".container8675309");
@@ -108,7 +38,7 @@ it italic or bold, as well as how to insert hyperlinks.
       container.className = randomID;
       applyDynamicStyles(randomID);
     } else {
-      console.log("Container not found");
+      console.log("Containernotfound");
     }
   });
 </script>
@@ -121,7 +51,7 @@ it italic or bold, as well as how to insert hyperlinks.
     position: relative;
     mix-blend-mode: screen;
     box-shadow: 0 0 8px 2px #edd58020;
-    margin: 0 auto;
+    margin: 0auto;
   }
   .coi9263jsdnaosuiedfn::before {
     content: "";
@@ -147,34 +77,27 @@ it italic or bold, as well as how to insert hyperlinks.
 <!-- 
 *****************************************
 *****************************************
-*****************************************
-*****************************************
+This is where you add your details!
+Ignore everything with a <div> tag, and just change things with a <span> tag. 
 
-Hey, Ben! This is where you add your details!
-Ignore everything with a <div> tag.
-Just change things with a <span> tag. 
-Each span has a generic ID that matches most of 
-your events, i.e. there's a date, time, location, 
-invite/virtual tag, and a description. I've noticed that
-some of your events vary, and it's fine
-if one is left blank, or the "invite/virtual" says something
-like a more specific location detail (ie a city name).
+Each span has a generic ID that matches most of your events: a date, time, location, 
+invite/virtual, a description, and video link. If you don't have specific details,
+feel free to leave a span blank! It won't mess up the design.
 
-When you're done, hit save. This kind of code doesn't reload
-quite as quickly as your regular Squarespace Drag and Drop,
-so it’s best to have your editing tab open here and then
-a live tab open so you can refresh and check it out. 
+When you're done, hit save. This kind of code doesn't reload automatically
+like regular Squarespace Drag and Drop, so I like having an editing tab
+open here and then a live tab open so you can refresh and check it out. 
 
-Here’s various bits of markup you might need:
+Here’s some HTML markup you might want. 
 Bold: <strong>text goes here</strong>
 Italics: <i>text goes here</i>
 Hyperlink: <a href="put the full link here" target="_blank">text of the link goes here</a>
+Line Break: <br> 
+(Note: hitting the enter button in code DOES NOT break the line the way it does in Word.)
 
-Note that each piece of markup has an opening tag <> and a closing tag </>. 
-You need both, otherwise you’ll get errors left and right.
-
-*****************************************
-*****************************************
+Note that each piece of markup (except Line Break) has an opening tag <> and a closing tag </>.
+Be careful here -- sometimes Squarespace likes to autofill your beginning and ending tags,
+so if something's not working right, that's a great place to start troubleshooting.
 *****************************************
 *****************************************
 -->
@@ -182,13 +105,27 @@ You need both, otherwise you’ll get errors left and right.
 <div class="coi9263jsdnaosuiedfn">
   <div class="container8675309">
     <div class="left-div">
-      <span id="date">February 22, 2024</span>
-      <span id="time">2:00PM ET</span>
-      <span id="location">Pie Network</span>
-      <span id="invite-or-virtual">Virtual, by Invitation</span>
+      <span id="date">
+        <!-- INSERT DATE BELOW -->
+        March 21, 2024
+      </span>
+      <span id="time">
+        <!-- INSERT TIME BELOW -->
+      </span>
+      <span id="location">
+        <!-- INSERT LOCATION BELOW -->
+        University of Pennsylvania
+      </span>
+      <span id="invite-or-virtual">
+        <!-- INSERT ANY OTHER DETAILS BELOW -->
+        (by invitation)
+      </span>
     </div>
     <div class="right-div">
-      <span> Benjamin Herold in conversation with members of the Policy Innovators in Education Network. </span>
+      <span id="description">
+        <!-- INSERT DESCRIPTION BELOW -->
+        Benjamin Herold & Bethany Smith in conversation with the Center for Experimental Ethnography.
+      </span>
     </div>
   </div>
 </div>
