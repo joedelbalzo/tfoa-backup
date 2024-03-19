@@ -1,0 +1,90 @@
+.Header-nav-item[href="/bio"]:hover {
+  color: green !important;
+}
+.Header-nav-item[href="/books"]:hover {
+  color: blue !important;
+}
+.Header-nav-item[href="/act"]:hover {
+  color: pink !important;
+}
+
+.header-announcement-bar-wrapper {
+  height: 175px;
+  padding: 0px 22px !important;
+}
+.header-title-nav-wrapper {
+  flex: 1 0 ~"calc(100% - 150px)" !important;
+}
+.header-title {
+  max-width: 150px;
+}
+.header-actions {
+  max-width: 150px;
+}
+
+.header-nav-list {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 468px;
+  height: 175px;
+}
+
+.header-nav-list > div {
+  display: flex;
+  height: 175px;
+  width: 30%;
+  padding: 0 !important;
+  margin: 0 !important;
+  align-items: center;
+  justify-content: center !important;
+}
+
+.header-nav-list > div > img {
+  margin-top: 10px !important;
+}
+
+.header-nav-list > div > a {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  color: white !important;
+  /*color: #4F51C4 !important;*/
+  /* text-shadow: 1px 1px 2px white; */
+  text-shadow: 1px 1px 1px #4f51c4;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.header-nav-list > div > a:hover {
+  color: #4f51c4cc !important;
+  text-shadow: 1px 1px 3px white;
+}
+
+@keyframes jiggleAnimation {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(35deg);
+  }
+  50% {
+    transform: rotate(-35deg);
+  }
+  75% {
+    transform: rotate(35deg);
+  }
+}
+
+.jiggle {
+  animation: jiggleAnimation 0.75s ease-in-out;
+}
+.sqs-block-button-element:hover {
+  background-color: #4f51c4;
+  color: #ffffff;
+}
+.sqs-block-newsletter .newsletter-form-button:hover {
+  color: #4f51c4 !important;
+  background: #ffffff !important;
+}
