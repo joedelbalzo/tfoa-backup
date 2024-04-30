@@ -21,7 +21,7 @@
 .header-actions {
   max-width: 150px;
 }
-
+/*DO NOT TOUCH THIS CODE UNLESS ADDING OR REMOVING SHELLS-- BEGIN.*/
 .header-nav-list {
   display: flex;
   align-items: center !important;
@@ -29,33 +29,28 @@
   min-width: 468px;
   height: 175px;
 }
-
 .header-nav-list > div {
   display: flex;
   height: 175px;
+  /*WIDTH AND HEIGHT NEED TO CHANGE IF ADDING SHELLS*/
   width: 30%;
   padding: 0 !important;
   margin: 0 !important;
   align-items: center;
   justify-content: center !important;
 }
-
 .header-nav-list > div > img {
   margin-top: 10px !important;
 }
-
 .header-nav-list > div > a {
   display: flex;
   font-size: 24px;
   font-weight: bold;
   color: white !important;
-  /*color: #4F51C4 !important;*/
-  /* text-shadow: 1px 1px 2px white; */
   text-shadow: 1px 1px 1px #4f51c4;
   align-items: center !important;
   justify-content: center !important;
 }
-
 .header-nav-list > div > a:hover {
   color: #4f51c4cc !important;
   text-shadow: 1px 1px 3px white;
@@ -88,3 +83,4 @@
   color: #4f51c4 !important;
   background: #ffffff !important;
 }
+/*DO NOT TOUCH THIS CODE -- END.*/
