@@ -1,0 +1,3 @@
+NOTE
+
+This site includes an entire application embedded in it, using React, Express, and a database. This folder is strictly for anything embedded into Squarespace's Code Injection and Custom CSS sections. 

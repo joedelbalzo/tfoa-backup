@@ -1,0 +1,86 @@
+/*turns off the javascript blocked script warning. do not undo this. it will cause lots of spacing issues.*/
+html.squarespace-damask .sqs-blockStatus {
+  display: none !important;
+}
+html.squarespace-damask .sqs-blockStatus,
+.sqs-block .removed-script {
+  display: none !important;
+}
+
+/* book color covers are...
+ rgba(238,45,111,1),
+ rgba(235,80,75,1), 
+ rgba(244,92,50,1),
+ rgba(250,133,34,1),
+ rgba(255,196,11,1),
+
+/*nav bottom border*/
+.header-announcement-bar-wrapper {
+  border: 16px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    rgba(238, 45, 111, 1) 15%,
+    rgba(235, 80, 75, 1) 30%,
+    rgba(244, 92, 50, 1) 50%,
+    rgba(250, 133, 34, 1) 70%,
+    rgba(255, 196, 11, 1) 100%
+  );
+  border-image-slice: 1;
+  border-width: 10px 5px;
+  border-top: 0;
+}
+
+#sections > section > div.content-wrapper > div > div > div {
+  min-height: 700px;
+  background: rgb(37, 53, 81);
+  background: linear-gradient(148deg, rgba(37, 53, 81, 1) 48%, rgba(37, 53, 81, 0.6115414915966386) 100%);
+}
+#jdb-ButtonId:hover {
+  background-color: #25355140 !important;
+  /*transform:scale(1.05); */
+  /*color: #c0d0ea; */
+  /*color: #f5f5f5; */
+  cursor: pointer;
+}
+#jdb-ButtonId:focus {
+  outline-offset: 0 !important;
+}
+
+#jdb-Input:focus-visible {
+  outline: none;
+}
+
+#jdb-Input::placeholder {
+  color: black;
+}
+
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta {
+  top: 20% !important;
+  border-radius: 10px;
+}
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta:hover {
+  cursor: pointer !important;
+}
+
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside {
+  outline: 2px solid #ffffff99;
+  border-radius: 10px;
+  width: 250px;
+  height: 100%;
+  margin: auto;
+  background-color: #25355140;
+}
+
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside:hover {
+  background-color: #25355199;
+}
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside > .meta-description > p {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  font-style: italic;
+}
+
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside > .meta-description > p {
+  font-size: 20px !important;
+}

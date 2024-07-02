@@ -1,0 +1,372 @@
+<style>
+  .jdb-123-container {
+    font-size: 3rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: space-between;
+    width: 100%;
+  }
+  .jdb-123-static-text {
+    line-height: 3rem;
+    color: white;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .jdb-123-dynamic-container {
+    height: 3rem;
+    line-height: 3rem;
+    min-width: 450px;
+    color: #f15e22;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.51);
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  #jdb-123-dynamicPart {
+    display: inline-block;
+    transition: transform 0.5s ease-out;
+    transform: translateY(0px);
+  }
+  /* Media Queries */
+  @media (min-width: 900px) and (max-width: 1100px) {
+    .jdb-123-container {
+      font-size: 2.7rem;
+    }
+    .jdb-123-static-text {
+      line-height: 2.7rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 2.7rem;
+      line-height: 2.7rem;
+      min-width: 415px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 900px) {
+    .jdb-123-container {
+      font-size: 2.3rem;
+    }
+    .jdb-123-static-text {
+      line-height: 2.3rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 2.3rem;
+      line-height: 2.3rem;
+      min-width: 350px;
+    }
+  }
+  @media (min-width: 600px) and (max-width: 768px) {
+    .jdb-123-container {
+      font-size: 3rem;
+    }
+    .jdb-123-static-text {
+      line-height: 3rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 3rem;
+      line-height: 3rem;
+      min-width: 400px;
+    }
+  }
+  @media (min-width: 500px) and (max-width: 600px) {
+    .jdb-123-container {
+      font-size: 2.6rem;
+    }
+    .jdb-123-static-text {
+      line-height: 2.6rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 2.6rem;
+      line-height: 2.6rem;
+      min-width: 300px;
+    }
+  }
+  @media (min-width: 450px) and (max-width: 500px) {
+    .jdb-123-container {
+      font-size: 40px;
+    }
+    .jdb-123-static-text {
+      line-height: 42px;
+    }
+    .jdb-123-dynamic-container {
+      height: 42px;
+      line-height: 42px;
+      min-width: fit-content;
+    }
+  }
+  @media (min-width: 400px) and (max-width: 450px) {
+    .jdb-123-container {
+      font-size: 32px;
+    }
+    .jdb-123-static-text {
+      line-height: 33px;
+    }
+    .jdb-123-dynamic-container {
+      height: 33px;
+      line-height: 33px;
+      min-width: fit-content;
+    }
+  }
+  @media (min-width: 350px) and (max-width: 400px) {
+    .jdb-123-container {
+      font-size: 32px;
+    }
+    .jdb-123-static-text {
+      line-height: 36px;
+    }
+    .jdb-123-dynamic-container {
+      height: 36px;
+      line-height: 36px;
+      min-width: fit-content;
+    }
+  }
+  @media (max-width: 350px) {
+    .jdb-123-container {
+      font-size: 30px;
+    }
+    .jdb-123-static-text {
+      line-height: 31px;
+    }
+    .jdb-123-dynamic-container {
+      height: 31px;
+      line-height: 31px;
+      min-width: fit-content;
+    }
+  }
+</style>
+
+<div class="jdb-123-container">
+  <span class="jdb-123-static-text"> BEGIN YOUR NEW &nbsp; </span>
+  <div class="jdb-123-dynamic-container">
+    <span id="dynamicPart"> CAREER JOURNEY. </span>
+  </div>
+</div>
+
+<script>
+  const phrases = ["CAREER JOURNEY.", "PERSONAL JOURNEY.", "LEADERSHIP JOURNEY."];
+  let currentIndex = 2;
+
+  function updateText() {
+    const dynamicPart = document.getElementById("dynamicPart");
+    dynamicPart.style.transform = "translateY(-125px)"; // Slide up out of view
+
+    setTimeout(() => {
+      if (currentIndex >= phrases.length - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      dynamicPart.textContent = phrases[currentIndex];
+      dynamicPart.style.transform = "translateY(-125px)"; // Set out of view for change
+    }, 400); // Wait until the slide-out finishes
+
+    setTimeout(() => {
+      dynamicPart.style.transform = "translateY(0)"; // Slide back into view
+    }, 500); // Start sliding back down after a slight delay
+  }
+
+  document.getElementById("dynamicPart").style.transform = "translateY(0px)";
+  updateText();
+  setInterval(updateText, 4000); // Change text every 4 seconds
+</script>
+
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!-- preorder page: -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+<style>
+  .jdb-123-container {
+    font-size: 5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: space-between;
+    width: 100%;
+  }
+  .jdb-123-static-text {
+    line-height: 5rem;
+    color: white;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .jdb-123-dynamic-container {
+    height: 5.1rem;
+    line-height: 5rem;
+    min-width: 650px;
+    color: #f15e22;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.51);
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  #jdb-123-dynamicPart {
+    display: inline-block;
+    transition: transform 0.5s ease-out;
+    transform: translateY(0px);
+  }
+  /* Media Queries */
+  @media (min-width: 900px) and (max-width: 1100px) {
+    .jdb-123-container {
+      font-size: 4rem;
+    }
+    .jdb-123-static-text {
+      line-height: 4rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 4rem;
+      line-height: 4rem;
+      min-width: 550px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 900px) {
+    .jdb-123-container {
+      font-size: 3.5rem;
+    }
+    .jdb-123-static-text {
+      line-height: 3.5rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 3.5rem;
+      line-height: 3.5rem;
+      min-width: 450px;
+    }
+  }
+  @media (min-width: 600px) and (max-width: 768px) {
+    .jdb-123-container {
+      font-size: 3.2rem;
+    }
+    .jdb-123-static-text {
+      line-height: 3.2rem;
+      padding-left: 2rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 3.2rem;
+      line-height: 3.2rem;
+      padding-left: 2rem;
+      min-width: 450px;
+    }
+  }
+  @media (min-width: 500px) and (max-width: 600px) {
+    .jdb-123-container {
+      font-size: 2.8rem;
+    }
+    .jdb-123-static-text {
+      line-height: 2.8rem;
+      padding-left: 2rem;
+    }
+    .jdb-123-dynamic-container {
+      height: 2.8rem;
+      line-height: 2.8rem;
+      padding-left: 2rem;
+      min-width: 350px;
+    }
+  }
+  @media (min-width: 450px) and (max-width: 500px) {
+    .jdb-123-container {
+      font-size: 40px;
+    }
+    .jdb-123-static-text {
+      line-height: 42px;
+      padding-left: 1rem;
+    }
+    .jdb-123-dynamic-container {
+      padding-left: 1rem;
+      height: 42px;
+      line-height: 42px;
+      min-width: fit-content;
+    }
+  }
+  @media (min-width: 400px) and (max-width: 450px) {
+    .jdb-123-container {
+      font-size: 36px;
+    }
+    .jdb-123-static-text {
+      line-height: 41px;
+      padding-left: 1rem;
+    }
+    .jdb-123-dynamic-container {
+      padding-left: 1rem;
+      height: 41px;
+      line-height: 41px;
+      min-width: fit-content;
+    }
+  }
+  @media (min-width: 350px) and (max-width: 400px) {
+    .jdb-123-container {
+      font-size: 32px;
+    }
+    .jdb-123-static-text {
+      line-height: 36px;
+      padding-left: 1rem;
+    }
+    .jdb-123-dynamic-container {
+      padding-left: 1rem;
+      height: 36px;
+      line-height: 36px;
+      min-width: fit-content;
+    }
+  }
+  @media (max-width: 350px) {
+    .jdb-123-container {
+      font-size: 30px;
+    }
+    .jdb-123-static-text {
+      line-height: 31px;
+      padding-left: 1rem;
+    }
+    .jdb-123-dynamic-container {
+      padding-left: 1rem;
+      height: 31px;
+      line-height: 31px;
+      min-width: fit-content;
+    }
+  }
+</style>
+
+<div class="jdb-123-container">
+  <span class="jdb-123-static-text"> BEGIN YOUR NEW &nbsp; </span>
+  <div class="jdb-123-dynamic-container">
+    <span id="jdb-123-dynamicPart"> CAREER JOURNEY. </span>
+  </div>
+</div>
+
+<script>
+  const phrases = ["CAREER JOURNEY.", "PERSONAL JOURNEY.", "LEADERSHIP JOURNEY."];
+  let currentIndex = 2;
+
+  function updateText() {
+    const dynamicPart = document.getElementById("jdb-123-dynamicPart");
+    dynamicPart.style.transform = "translateY(-125px)"; // Slide up out of view
+
+    setTimeout(() => {
+      if (currentIndex >= phrases.length - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex++;
+      }
+      dynamicPart.textContent = phrases[currentIndex];
+      dynamicPart.style.transform = "translateY(-125px)"; // Set out of view for change
+    }, 400); // Wait until the slide-out finishes
+
+    setTimeout(() => {
+      dynamicPart.style.transform = "translateY(0)"; // Slide back into view
+    }, 500); // Start sliding back down after a slight delay
+  }
+
+  document.getElementById("jdb-123-dynamicPart").style.transform = "translateY(0px)";
+  updateText();
+  setInterval(updateText, 4000); // Change text every 4 seconds
+</script>
