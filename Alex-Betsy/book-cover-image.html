@@ -1,0 +1,55 @@
+<div class="custom-image-overlay-container">
+  <div class="custom-image-wrapper">
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/6638d89c40efc07873141ba2/d5cd0c92-dac3-4382-bbc0-40681d87568e/YourHiddenGenius.jpg"
+      alt="Your Hidden Genius Book Cover"
+    />
+    <div class="custom-overlay"><a href="/preorder">PREORDER HERE</a></div>
+  </div>
+</div>
+
+<style>
+  .custom-image-overlay-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+  }
+
+  .custom-image-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .custom-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .custom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease;
+    visibility: hidden;
+    font-size: 36px;
+    text-align: center;
+    line-height: 3rem;
+    word-wrap: wrap;
+    font-family: "Gilroy-Medium", sans-serif !important;
+  }
+
+  .custom-image-wrapper:hover .custom-overlay {
+    visibility: visible;
+    background-color: #25355199;
+    cursor: pointer;
+  }
+</style>

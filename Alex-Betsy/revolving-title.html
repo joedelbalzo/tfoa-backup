@@ -1,4 +1,7 @@
 <style>
+  section[data-section-id="666c6fb329737c38a6ddf281"] > div > div > div > * {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
   .jdb-123-container {
     font-size: 3rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -24,7 +27,7 @@
     flex-grow: 1;
     overflow: hidden;
   }
-  #jdb-123-dynamicPart {
+  #dynamicPart {
     display: inline-block;
     transition: transform 0.5s ease-out;
     transform: translateY(0px);
@@ -57,76 +60,118 @@
     }
   }
   @media (min-width: 600px) and (max-width: 768px) {
+    .jdb-123-container > .jdb-123-static-text > span {
+      display: none;
+    }
     .jdb-123-container {
       font-size: 3rem;
+      text-align: center;
     }
     .jdb-123-static-text {
       line-height: 3rem;
+      text-align: center;
+      text-align: center !important;
+      margin: 0 auto;
     }
     .jdb-123-dynamic-container {
       height: 3rem;
       line-height: 3rem;
       min-width: 400px;
+      text-align: center;
     }
   }
   @media (min-width: 500px) and (max-width: 600px) {
+    .jdb-123-container > .jdb-123-static-text > span {
+      display: none;
+    }
     .jdb-123-container {
       font-size: 2.6rem;
+      text-align: center;
     }
     .jdb-123-static-text {
       line-height: 2.6rem;
+      text-align: center !important;
+      margin: 0 auto;
     }
     .jdb-123-dynamic-container {
       height: 2.6rem;
       line-height: 2.6rem;
       min-width: 300px;
+      text-align: center;
     }
   }
   @media (min-width: 450px) and (max-width: 500px) {
+    .jdb-123-container > .jdb-123-static-text > span {
+      display: none;
+    }
     .jdb-123-container {
       font-size: 40px;
+      text-align: center;
     }
     .jdb-123-static-text {
       line-height: 42px;
+      text-align: center !important;
+      margin: 0 auto;
     }
     .jdb-123-dynamic-container {
       height: 42px;
       line-height: 42px;
       min-width: fit-content;
+      text-align: center;
     }
   }
   @media (min-width: 400px) and (max-width: 450px) {
+    .jdb-123-container > .jdb-123-static-text > span {
+      display: none;
+    }
     .jdb-123-container {
       font-size: 32px;
+      margin: 0 auto;
     }
     .jdb-123-static-text {
-      line-height: 33px;
+      line-height: 32px;
+      text-align: center !important;
+      margin: 0 auto;
     }
     .jdb-123-dynamic-container {
-      height: 33px;
-      line-height: 33px;
+      height: 32px;
+      line-height: 32px;
       min-width: fit-content;
+      text-align: center;
     }
   }
   @media (min-width: 350px) and (max-width: 400px) {
+    .jdb-123-container > .jdb-123-static-text > span {
+      display: none;
+    }
     .jdb-123-container {
       font-size: 32px;
+      text-align: center;
     }
     .jdb-123-static-text {
-      line-height: 36px;
+      line-height: 32px;
+      text-align: center !important;
+      margin: 0 auto;
     }
     .jdb-123-dynamic-container {
-      height: 36px;
-      line-height: 36px;
+      height: 32px;
+      line-height: 32px;
       min-width: fit-content;
+      text-align: center;
     }
   }
   @media (max-width: 350px) {
+    .jdb-123-container > .jdb-123-static-text > span {
+      display: none;
+    }
     .jdb-123-container {
       font-size: 30px;
+      text-align: center;
     }
     .jdb-123-static-text {
       line-height: 31px;
+      text-align: center !important;
+      margin: 0 auto;
     }
     .jdb-123-dynamic-container {
       height: 31px;
@@ -137,7 +182,7 @@
 </style>
 
 <div class="jdb-123-container">
-  <span class="jdb-123-static-text"> BEGIN YOUR NEW &nbsp; </span>
+  <div class="jdb-123-static-text">BEGIN YOUR NEW <span>&nbsp;</span></div>
   <div class="jdb-123-dynamic-container">
     <span id="dynamicPart"> CAREER JOURNEY. </span>
   </div>
