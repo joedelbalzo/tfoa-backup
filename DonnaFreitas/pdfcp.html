@@ -1,0 +1,130 @@
+<style>
+  #pdf-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 80vh;
+    margin-top: 0px;
+    margin-bottom: 12px;
+    overflow: auto;
+  }
+  #pdf-canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  #navigation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    padding: 10px 0;
+  }
+  button {
+    height: 48px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+    outline: 1px solid #bf9bde;
+    border: none !important;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  button:hover {
+    background-color: #bf9bde;
+    color: #fff;
+  }
+  button:not(:hover) {
+    background-color: #f8f8f8;
+    color: #000;
+  }
+  input[type="number"] {
+    height: 48px;
+    width: 125px;
+    padding: 5px;
+    padding-left: 15px;
+    margin: 0 10px;
+    text-align: center;
+  }
+</style>
+
+<div id="navigation-controls">
+  <button id="prev-page">&lt;&lt;</button>
+  <input type="number" id="page-input" min="1" placeholder="Jump to page" />
+  <button id="next-page">&gt;&gt;</button>
+</div>
+<div id="pdf-container">
+  <canvas id="pdf-canvas"></canvas>
+</div>
+
+<script type="module">
+  import { getDocument } from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs";
+  import { GlobalWorkerOptions } from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs";
+
+  GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.mjs";
+
+  // const url = "https://www.donnafreitas.com/wp-content/uploads/2024/08/Freitas_StefiUncutScenes.pdf";
+  const url = "https://www.donnafreitas.com/wp-content/uploads/2024/08/Freitas_TheScandalousLife_Novella_5x8_v2.pdf";
+
+  let pdf = null;
+  let currentPage = 1;
+
+  async function loadPdf(url) {
+    try {
+      const loadingTask = getDocument(url);
+      pdf = await loadingTask.promise;
+      console.log(`PDF loaded with ${pdf.numPages} pages.`);
+      await renderPage(currentPage);
+    } catch (error) {
+      console.error("Error loading PDF: ", error);
+    }
+  }
+
+  async function renderPage(pageNum) {
+    try {
+      const page = await pdf.getPage(pageNum);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = document.getElementById("pdf-canvas");
+      const context = canvas.getContext("2d");
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderContext = {
+        canvasContext: context,
+        viewport: viewport,
+      };
+      await page.render(renderContext).promise;
+      console.log(`Page ${pageNum} rendered`);
+    } catch (error) {
+      console.error(`Error rendering page ${pageNum}: `, error);
+    }
+  }
+
+  document.getElementById("prev-page").addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPage(currentPage);
+    }
+  });
+
+  document.getElementById("next-page").addEventListener("click", () => {
+    if (currentPage < pdf.numPages) {
+      currentPage++;
+      renderPage(currentPage);
+    }
+  });
+
+  document.getElementById("page-input").addEventListener("change", function () {
+    let page = parseInt(this.value);
+    if (page >= 1 && page <= pdf.numPages) {
+      currentPage = page;
+      renderPage(currentPage);
+    }
+  });
+
+  document.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+  });
+
+  loadPdf(url); // Call the function to load the PDF
+</script>

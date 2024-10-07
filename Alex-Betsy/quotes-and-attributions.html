@@ -1,0 +1,240 @@
+<style>
+  .sqs-block-code .sqs-block-content {
+    height: 100%;
+    min-height: 450px;
+  }
+
+  .jdb-quotes {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .jdb-left-button,
+  .jdb-right-button {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #f15e2280;
+    color: whitesmoke;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    flex-grow: 0;
+    font-size: 2rem;
+  }
+
+  .jdb-left-button:hover,
+  .jdb-right-button:hover {
+    background-color: #f15e22;
+  }
+
+  .jdb-quotes-flex {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .jdb-quotation {
+    font-size: 1.8rem;
+    line-height: 1.95rem;
+    padding: 1rem;
+    word-wrap: normal;
+    text-align: center;
+  }
+
+  .jdb-attribution {
+    font-size: 1rem;
+    padding: 1rem;
+    word-wrap: normal;
+    text-align: center;
+  }
+
+  .quote {
+    display: none;
+  }
+
+  .quote.active {
+    display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    .jdb-quotes {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .jdb-quotes-flex {
+      order: 1;
+      flex-basis: 100%;
+    }
+
+    .jdb-quotation {
+      font-size: 1.3rem;
+      line-height: 1.35rem;
+      padding: 0.5rem;
+    }
+
+    .jdb-left-button,
+    .jdb-right-button {
+      order: 2;
+      flex-basis: unset;
+      flex-shrink: unset;
+      flex-grow: unset;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+</style>
+
+<div class="jdb-quotes">
+  <button class="jdb-left-button">&#8592;</button>
+  <div class="jdb-quotes-flex">
+    <div class="quote">
+      <div class="jdb-quotation">
+        "Adults of all ages want work that aligns with their potential, purpose, and preferences. Amazingly, <em>Your Hidden Genius</em> —
+        and the accompanying assessment — can tell you what that work is. I wish I had this revealing and empowering book when I was
+        starting my career."
+      </div>
+      <div class="jdb-attribution">—Meg Jay PhD, author of <em>The Defining Decade</em></div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "<em>Your Hidden Genius</em> is the book every working person needs. Whether you are looking for your perfect first job, your
+        fulfilling last role, or greater success in a position you are retaining, it is an essential tool that will scientifically help you
+        identify your hidden preferences that are stumbling blocks unseen, and catalyst when well understood."
+      </div>
+      <div class="jdb-attribution">
+        —Alice Randall, author, professor, writer-in-residence, and Andrew W. Mellon Chair in the Humanities, Vanderbilt University
+      </div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "<em>Your Hidden Genius</em> reflects groundbreaking research and the future of assessment testing at every level. Whether you are
+        starting your career or looking for a change 20 years into a job, Betsy and Alexandra can ground you in your unique capabilities and
+        ways to unlock new doors."
+      </div>
+      <div class="jdb-attribution">
+        —Marshall Goldsmith, Thinkers50 #1 Executive Coach and New York Times bestselling author of
+        <em>What Got You Here Won’t Get You There</em> and <em>The Earned Life</em>
+      </div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "If happiness, success, and fulfillment are your intended destinations in life (and who doesn’t want those?)
+        <em>Your Hidden Genius</em> is your express-lane ticket. It unlocks the natural gifts you were born with. Once you know clearly what
+        they are, you can (finally!) align your career to take full advantage of them. This is science, folks—proven benefits derived from
+        over a century of data collected by rigorously testing millions of people. It truly works."
+      </div>
+      <div class="jdb-attribution">—Adam Taggart, entrepreneur and author of <em>Finding Your Way to Your Authentic Career</em></div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "Why live holding a pen in the wrong hand, <em>Your Hidden Genius</em> asks? Connecting you to 70+ years of research and an
+        aptitude-based guidance system, Wills and Ellison give untapped potential a voice, a stage, and hope. Illuminating talents and
+        personality assets, they greatly advance a movement of millions designing a life rather than live by default. With them, write the
+        story of being your best while confidently navigating a lifetime of life role transitions."
+      </div>
+      <div class="jdb-attribution">
+        —Rich Feller PhD, LPC, JCTC, a National Career Development Association past president, Colorado State University Distinguished
+        Teaching Scholar and Eminent Career Award Recipient
+      </div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "For those searching to connect their unique interests and strengths with a career that is true to who you are, this book can help
+        you chart that path!"
+      </div>
+      <div class="jdb-attribution">—Mike Marriner, Co-Founder and President, Roadtrip Nation</div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "In <em>Your Hidden Genius</em>, Betsy Wills and Alex Ellison skillfully weave together unsung aptitude research and intriguing
+        storytelling to unlock and distinguish the innate sources of everyone’s potential. As I’ve seen over the last 30 years working with
+        thousands of highly educated people who were unsure whether they fell into the wrong career and baffled by how to find their
+        direction, this is a longstanding problem. To uncover what you are naturally good at, get this book."
+      </div>
+      <div class="jdb-attribution">—Anthony Spadafore, Coauthor of <em>Now What?</em></div>
+    </div>
+    <div class="quote">
+      <div class="jdb-quotation">
+        "<em>Your Hidden Genius</em> reveals the keys in our aptitudes and personalities that can unlock our talents. Betsy Wills and Alex
+        Ellison marshal both the foundational science and fascinating stories behind their system. An added benefit is learning to
+        understand those with different profiles from our own, strengthening the #1 skill companies are looking for: the ability to
+        collaborate effectively."
+      </div>
+      <div class="jdb-attribution">—Dr. Milton Chen, Executive Director, Emeritus, George Lucas Educational Foundation</div>
+    </div>
+  </div>
+  <button class="jdb-right-button">&#8594;</button>
+</div>
+
+<script>
+  const quotes = document.querySelectorAll(".quote");
+  const quotesFlex = document.querySelector(".jdb-quotes-flex");
+  let currentIndex = 0;
+  let rotationInterval;
+  let fadeTimeout;
+
+  function showQuote(index) {
+    quotes.forEach((quote, i) => {
+      quote.classList.toggle("active", i === index);
+    });
+    // Reset opacity to 1 when showing a new quote
+    quotesFlex.style.opacity = 1;
+  }
+
+  function nextQuote() {
+    currentIndex = (currentIndex + 1) % quotes.length;
+    showQuote(currentIndex);
+    scheduleFadeOut();
+  }
+
+  function previousQuote() {
+    currentIndex = (currentIndex - 1 + quotes.length) % quotes.length;
+    showQuote(currentIndex);
+    scheduleFadeOut();
+  }
+
+  function scheduleFadeOut() {
+    clearTimeout(fadeTimeout);
+    fadeTimeout = setTimeout(() => {
+      quotesFlex.style.opacity = 0;
+    }, 9500); // Fade out at 9.5 seconds
+  }
+
+  function resetRotation() {
+    clearInterval(rotationInterval);
+    clearTimeout(fadeTimeout);
+    rotationInterval = setInterval(nextQuote, 10000);
+    scheduleFadeOut();
+  }
+
+  document.querySelector(".jdb-left-button").addEventListener("click", () => {
+    previousQuote();
+    resetRotation();
+  });
+
+  document.querySelector(".jdb-right-button").addEventListener("click", () => {
+    nextQuote();
+    resetRotation();
+  });
+
+  // Initialize
+  showQuote(currentIndex);
+  rotationInterval = setInterval(nextQuote, 10000);
+  scheduleFadeOut();
+</script>
