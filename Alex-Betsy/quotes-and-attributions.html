@@ -1,11 +1,7 @@
 <style>
-  .sqs-block-code .sqs-block-content {
-    height: 100%;
-    min-height: 450px;
-  }
-
   .jdb-quotes {
     width: 100%;
+    min-height: 300px;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -52,6 +48,8 @@
     padding: 1rem;
     word-wrap: normal;
     text-align: center;
+    width: 80%;
+    margin: 0 auto;
   }
 
   .jdb-attribution {
@@ -68,9 +66,25 @@
   .quote.active {
     display: block;
   }
+  @media screen and (max-width: 900px) {
+    .jdb-quotes {
+      min-height: 500px;
+    }
+    .jdb-quotation {
+      font-size: 1.4rem;
+      line-height: 1.45rem;
+      padding: 0.5rem;
+    }
+
+    .jdb-attribution {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+  }
 
   @media screen and (max-width: 768px) {
     .jdb-quotes {
+      min-height: 550px;
       flex-direction: row;
       flex-wrap: wrap;
     }
@@ -86,8 +100,13 @@
       padding: 0.5rem;
     }
 
+    .quote {
+      flex-grow: 1;
+    }
+
     .jdb-left-button,
     .jdb-right-button {
+      align-items: flex-end;
       order: 2;
       flex-basis: unset;
       flex-shrink: unset;
@@ -118,7 +137,7 @@
         identify your hidden preferences that are stumbling blocks unseen, and catalyst when well understood."
       </div>
       <div class="jdb-attribution">
-        —Alice Randall, author, professor, writer-in-residence, and Andrew W. Mellon Chair in the Humanities, Vanderbilt University
+        —Alice Randall, author, professor, writer-in-residence and Andrew W. Mellon Chair in the Humanities, Vanderbilt University
       </div>
     </div>
     <div class="quote">
@@ -128,7 +147,7 @@
         ways to unlock new doors."
       </div>
       <div class="jdb-attribution">
-        —Marshall Goldsmith, Thinkers50 #1 Executive Coach and New York Times bestselling author of
+        —Marshall Goldsmith, <em>Thinkers50 </em>#1 Executive Coach and New York Times bestselling author of
         <em>What Got You Here Won’t Get You There</em> and <em>The Earned Life</em>
       </div>
     </div>
@@ -158,7 +177,7 @@
         "For those searching to connect their unique interests and strengths with a career that is true to who you are, this book can help
         you chart that path!"
       </div>
-      <div class="jdb-attribution">—Mike Marriner, Co-Founder and President, Roadtrip Nation</div>
+      <div class="jdb-attribution">—Mike Marriner, Co-Founder and President, Road Trip Nation</div>
     </div>
     <div class="quote">
       <div class="jdb-quotation">
@@ -172,9 +191,9 @@
     <div class="quote">
       <div class="jdb-quotation">
         "<em>Your Hidden Genius</em> reveals the keys in our aptitudes and personalities that can unlock our talents. Betsy Wills and Alex
-        Ellison marshal both the foundational science and fascinating stories behind their system. An added benefit is learning to
-        understand those with different profiles from our own, strengthening the #1 skill companies are looking for: the ability to
-        collaborate effectively."
+        Ellison l both the foundational science and fascinating stories behind their system. An added benefit is learning to understand
+        those with different profiles from our own, strengthening the #1 skill companies are looking for: the ability to collaborate
+        effectively."
       </div>
       <div class="jdb-attribution">—Dr. Milton Chen, Executive Director, Emeritus, George Lucas Educational Foundation</div>
     </div>
