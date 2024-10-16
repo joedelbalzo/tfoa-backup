@@ -7,14 +7,40 @@
     overflow: hidden;
     background-color: #253551;
   }
-  .jdb-gallery-image {
+
+  .gallery {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: no-repeat center/cover;
-    transition: opacity 0.5s ease-in-out;
     opacity: 0;
+    transition: opacity 1s ease-in-out;
   }
+
+  .gallery.active {
+    opacity: 1;
+  }
+
+  .gallery::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.4) 80%);
+    z-index: 1;
+  }
+
+  .jdb-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+  }
+
   .jdb-gallery-content {
     position: absolute;
     bottom: 10%;
@@ -24,13 +50,18 @@
     padding: 20px;
     box-shadow: 0 0 2rem 2rem rgba(0, 0, 0, 0.2);
     border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 28px;
+    text-shadow: 1px 1px 1px black;
+    z-index: 2;
   }
+
   .jdb-gallery-content h1,
   .jdb-gallery-content a {
     transition: color 1s ease-in-out;
   }
+
   .jdb-gallery-content h1 {
     font-size: 3rem;
     font-weight: bold;
@@ -40,6 +71,7 @@
     width: fit-content;
     border-bottom: 2px solid whitesmoke;
   }
+
   .jdb-gallery-content a {
     color: whitesmoke;
     text-decoration: none;
@@ -48,86 +80,104 @@
   }
 </style>
 
-<div class="jdb-gallery">
-  <div class="jdb-gallery-image" id="jdb-gallery-background-image"></div>
-  <div class="jdb-gallery-content">
-    <h1 id="jdb-gallery-title">Here is the first title</h1>
-    <p id="jdb-gallery-text"><a href="#" id="jdb-gallery-link">Here is the text. Feel free if you want to click on this link.</a></p>
+<section class="jdb-gallery">
+  <div class="gallery">
+    <img
+      src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=50&w=1920&auto=format&fit=crop"
+      alt="Photo of people putting their hands together in a circle, as if they're working together! Photo by Hannah Busing"
+      class="jdb-gallery-image"
+    />
+    <div class="jdb-gallery-content">
+      <h1>Build a Better Team</h1>
+      <p>
+        No winning team is made up of only quarterbacks. Great leaders know how to draw on the strengths of each member.
+        <em>Your Hidden Genius</em> is an invaluable resource for insights and tools to promote healthy dialogue and use a team’s individual
+        talents to develop winning strategies.
+      </p>
+    </div>
   </div>
-</div>
+  <div class="gallery">
+    <img
+      src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=50&w=1920&auto=format&fit=crop"
+      alt="Photo of co-workers on their laptops at a large conference table working together. Photo by Annie Spratt"
+      class="jdb-gallery-image"
+    />
+    <div class="jdb-gallery-content">
+      <h1>Discover You</h1>
+      <p>
+        Unlocking your aptitudes for personal fulfillment, growth, and discovery. <em>Your Hidden Genius</em> will shine a light on
+        underused skills, hobbies, and activities that can help us achieve balance and happiness both at home and at work.
+      </p>
+    </div>
+  </div>
+  <div class="gallery">
+    <img
+      src="https://images.unsplash.com/photo-1633113214207-1568ec4b3298?q=50&w=1920&auto=format&fit=crop"
+      alt="Photo of three colleagues sitting together, published by Microsoft Surface"
+      class="jdb-gallery-image"
+    />
+    <div class="jdb-gallery-content">
+      <h1>Career Wellbeing</h1>
+      <p>
+        <em>Your Hidden Genius</em> offers a scientific evaluation of your wellbeing at work. By identifying your pressure points and
+        untapped opportunities, you will be well-equipped to grow and change.
+      </p>
+    </div>
+  </div>
+</section>
 
 <script>
-  const galleryContent = [
-    {
-      img: 'url("https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=50&w=1920&auto=format&fit=crop")',
-      alt: "Photo of people putting their hands together in a circle, as if they're working together! Photo by Hannah Busing",
-      title: "Build a Better Team",
-      text: "No winning team is made up of only quarterbacks. Great leaders know how to draw on the strengths of each member. <em>Your Hidden Genius</em> is an invaluable resource for insights and tools to promote healthy dialogue and use a team’s individual talents to develop winning strategies.",
-      link: "",
-    },
-    {
-      img: 'url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=50&w=1920&auto=format&fit=crop")',
-      alt: "Photo of co-workers on their laptops at a large conference table working together. Photo by Annie Spratt",
-      title: "Discover You",
-      text: "Unlocking your aptitudes for personal fulfillment, growth, and discovery. <em>Your Hidden Genius</em> will shine a light on underused skills, hobbies, and activities that can help us achieve balance and happiness both at home and at work.",
-      link: "",
-    },
-    {
-      img: 'url("https://images.unsplash.com/photo-1633113214207-1568ec4b3298?q=50&w=1920&auto=format&fit=crop")',
-      alt: "Photo of three colleagues sitting together, published by Microsoft Surface",
-      title: "Career Wellness",
-      text: "<em>Your Hidden Genius</em> offers a scientific evaluation of your wellbeing at work. By identifying your pressure points and untapped opportunities, you will be well-equipped to grow and change.",
-      link: "",
-    },
-  ];
-  let currentIndex = 0;
+  const galleryItems = document.querySelectorAll(".gallery");
+  let currentGalleryIndex = 0;
+  const totalItems = galleryItems.length;
+  const transitionDuration = 1000;
+  const slideDuration = 10000;
 
+  /**
+   * Preloads and sets the image sources to prevent any delay
+   *
+   * */
   function preloadImages() {
-    galleryContent.forEach((item) => {
-      const img = new Image();
-      img.src = item.img.slice(5, -2);
+    galleryItems.forEach((item) => {
+      const img = item.querySelector(".jdb-gallery-image");
+      if (img) {
+        const preloadedImage = new Image();
+        preloadedImage.src = img.src;
+      }
     });
   }
 
-  function updateGallery() {
-    const dynamicBackgroundImage = document.getElementById("jdb-gallery-background-image");
-    const dynamicTitle = document.getElementById("jdb-gallery-title");
-    const dynamicText = document.getElementById("jdb-gallery-text");
-    const dynamicLink = document.getElementById("jdb-gallery-link");
-    const galleryContentBlock = document.querySelector(".jdb-gallery-content");
-
-    const currentContent = galleryContent[currentIndex];
-    dynamicBackgroundImage.style.backgroundImage = currentContent.img;
-    dynamicTitle.textContent = currentContent.title;
-    dynamicText.firstChild.href = currentContent.link;
-    // dynamicText.firstChild.textContent = currentContent.text;
-
-    // Clear existing text to prepare for new content
-    dynamicText.firstChild.innerHTML = "";
-
-    // Insert text with italics for book title
-    const bookTitle = "Your Hidden Genius";
-    const textWithEmphasis = currentContent.text.replace(/<em>(.*?)<\/em>/g, (match, p1) => {
-      return `<em>${p1}</em>`; // Safely inject emphasis tags around the book title
+  /**
+   * Rotates the gallery by adding and removing the class name "active"
+   *
+   * */
+  function showSlide(index) {
+    galleryItems.forEach((item, i) => {
+      if (i === index) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
     });
+  }
 
-    dynamicText.firstChild.innerHTML = textWithEmphasis;
+  /**
+   * Begins the show, runs each slide for 10 seconds, and fades between the two for a second.
+   *
+   * */
+  function startSlideshow() {
+    showSlide(currentGalleryIndex);
 
-    dynamicBackgroundImage.style.opacity = 1;
-    galleryContentBlock.style.opacity = 1;
+    setInterval(() => {
+      galleryItems[currentGalleryIndex].classList.remove("active");
+      currentGalleryIndex = (currentGalleryIndex + 1) % totalItems;
 
-    currentIndex++;
-    if (currentIndex >= galleryContent.length) {
-      currentIndex = 0;
-    }
-
-    setTimeout(() => {
-      dynamicBackgroundImage.style.opacity = 0;
-      galleryContentBlock.style.opacity = 0;
-    }, 9500);
+      setTimeout(() => {
+        showSlide(currentGalleryIndex);
+      }, transitionDuration);
+    }, slideDuration);
   }
 
   preloadImages();
-  updateGallery();
-  setInterval(updateGallery, 10000);
+  startSlideshow();
 </script>
