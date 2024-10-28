@@ -1,0 +1,97 @@
+<style>
+  .jdb-aptitutes-image {
+    background-image: url("https://images.squarespace-cdn.com/content/v1/6638d89c40efc07873141ba2/43165537-2562-49b5-8242-88c0af7db50b/GradientOutline.png?format=1500w");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+    /* height: 100%; */
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .jdb-aptitudes-image-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* margin: 0 auto; */
+    padding: 0 8px;
+  }
+
+  .jdb-aptitudes-image-container > * {
+    flex: 1 1 18%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .jdb-aptitudes-image-container > h3 {
+    text-align: center;
+  }
+  .jdb-aptitudes-image-container > h3 > a {
+    word-wrap: break-word;
+    text-align: center;
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  .jdb-aptitudes-image-container > h3 > a:hover {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #f5f5f5;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transform: scale(1.025);
+  }
+  .jdb-aptitudes-image-container > img {
+    max-width: 18%;
+  }
+  @media screen and (max-width: 500px) {
+    .jdb-aptitutes-image {
+      height: 100px;
+      width: 98%;
+      margin: 0 auto;
+    }
+    .jdb-aptitudes-image-container > * {
+      padding: 2px;
+    }
+
+    .jdb-aptitudes-image-container > h3 {
+      font-size: calc(10px + 1vw);
+      word-wrap: wrap;
+    }
+    .jdb-aptitudes-image-container > img {
+      max-width: 12%;
+      margin-left: 4px !important;
+      margin-right: 4px !important;
+    }
+  }
+</style>
+
+<div class="jdb-aptitutes-image">
+  <div class="jdb-aptitudes-image-container">
+    <h3><a href="#block-3de3c6e1ef59ddfb0156">Fact Checker</a></h3>
+    <img
+      class="jdb-arrows-left"
+      src="https://images.squarespace-cdn.com/content/v1/6638d89c40efc07873141ba2/91e3502c-e89f-42fa-a60c-bed99a17314d/ArrowsLeft.png?format=1000w"
+    />
+    <h3><a href="#block-e6e7b7cacdf59b50e017">Investigator</a></h3>
+    <img
+      class="jdb-arrows-right"
+      src="https://images.squarespace-cdn.com/content/v1/6638d89c40efc07873141ba2/33879c03-9e88-4b93-975b-674931a2e7f5/ArrowsRight.png?format=1000w"
+    />
+    <h3><a href="#block-c2b5d5fe32525945fd83">Diagnostic Problem Solver</a></h3>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
