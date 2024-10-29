@@ -1,0 +1,76 @@
+/* //jdb mandatory css */
+/*turns off the javascript blocked script warning. do not undo this. it will cause lots of spacing issues.*/
+html.squarespace-damask .sqs-blockStatus {
+  display: none !important;
+}
+html.squarespace-damask .sqs-blockStatus,
+.sqs-block .removed-script {
+  display: none !important;
+}
+h1,
+h2,
+h3,
+h4 {
+  -webkit-hyphens: manual !important;
+  -ms-hyphens: manual !important;
+  hyphens: manual !important;
+}
+
+/* //font styles */
+* {
+  font-family: unset !important;
+  font-family: "Univers", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h1 > *,
+h2 > *,
+h3 > *,
+h4 > *,
+h5 > *,
+h6 > * {
+  font-family: unset !important;
+  font-family: "nevis", sans-serif !important;
+}
+
+/* //sticky image */
+[data-section-id="66d0d6d3ea38a0e251bdeffa"] .section-background {
+  background-attachment: fixed !important;
+}
+
+.collection-type-blog.view-item .image-block {
+  padding-bottom: 0;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0;
+}
+
+/* //footer */
+footer #block-yui_3_17_2_1_1726068185759_9491 > div > div > a:hover {
+  color: #02784d !important;
+}
+
+#block-yui_3_17_2_1_1726068185759_3496 > div > div > h4 {
+  display: flex;
+
+  justify-content: space-evenly;
+  align-items: center;
+}
+/*  #block-yui_3_17_2_1_1726068185759_3496 > div > div > h4 > a {
+  flex: 1 1 20%;
+}*/
+
+@media screen and (max-width: 768px) {
+  #block-yui_3_17_2_1_1726068185759_3496 > div > div > h4 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #block-yui_3_17_2_1_1726068185759_3496 > div > div > h4 > a {
+    padding: 2px 4px;
+  }
+}

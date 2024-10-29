@@ -1,0 +1,83 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5N3JXR2Z');</script>
+  <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/gilroy-bold?v=1" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></link>
+  <script src="https://kit.fontawesome.com/dabe489c18.js" crossorigin="anonymous"></script>
+
+  <!-- Scroll To Top Button HTML -->
+<button id="wm-back-to-top">
+  <div class="btt-background"></div>
+  <div class="icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <title>Angle Up</title>
+      <path data-name="layer1" fill="none" stroke="#ffffff" stroke-miterlimit="10" stroke-width="2" d="M4 42 l28 -26 L60 42" stroke-linejoin="round" stroke-linecap="round"></path>
+    </svg>
+  </div>
+
+</button>
+
+<!-- Scroll To Top Button Javascript -->
+<script>
+(function() {
+  let throttlePause;
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#wm-back-to-top')) return;
+    smoothScrollToTop(); // Replace the previous window.scrollTo call
+  });
+  
+  document.addEventListener('DOMContentLoaded', function(){
+    let btt = document.querySelector('#wm-back-to-top');
+    if (btt?.closest('.sqs-block-content')){
+      btt.closest('.sqs-block-content').style.display = 'inline';
+    }
+  });
+const throttle = (callback, time) => {
+    if (throttlePause) return;
+    throttlePause = true;
+    setTimeout(() => {
+      callback();
+      throttlePause = false;
+    }, time);
+  };
+
+  const checkPos = () => {
+    let pos = document.documentElement.scrollTop || document.body.scrollTop,
+        revealHeight = window.innerHeight * 0.2,
+        bttButton = document.querySelector('#wm-back-to-top');
+    if (pos >= revealHeight) {
+      bttButton.classList.add('show');
+    } else {
+      bttButton.classList.remove('show');
+    }
+  }
+
+  window.addEventListener("scroll", () => throttle(checkPos, 850));
+  window.addEventListener('DOMContentLoaded', checkPos);
+
+  // Smooth scroll function
+  function smoothScrollToTop(duration = 500) {
+    const start = document.documentElement.scrollTop || document.body.scrollTop;
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeInOut = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+      window.scrollTo(0, start * (1 - easeInOut));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+}());
+</script>

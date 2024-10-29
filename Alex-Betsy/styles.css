@@ -1,3 +1,5 @@
+/*latest cover link is https://static1.squarespace.com/static/6638d89c40efc07873141ba2/t/66f2b1b874debb33b62ab0f9/1727181240247/9-24-24+YourHiddenGenius_HC.jpg
+
 /* book color covers are...
 Pink: #ed2b72
 Orange: #f15e22
@@ -21,6 +23,9 @@ h4 {
   hyphens: manual !important;
   white-space: break-spaces !important;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .book-cover-image {
   outline: 10px solid red !important;
@@ -33,11 +38,11 @@ html body nav div a html > *,
 body > *,
 nav > *,
 div > * {
-  font-family: "Gilroy-Medium", sans-serif !important;
+  font-family: "Gilroy-Regular", sans-serif !important;
 }
 
 nav > div > a {
-  font-family: "Gilroy-Medium", sans-serif !important;
+  font-family: "Gilroy-Regular", sans-serif !important;
   font-size: 15px;
 }
 
@@ -48,7 +53,7 @@ nav > div > a {
   border-image-slice: 1;
   border-width: 0px 0px 10px;
 }
-//background for desktop
+/* //background for desktop */
 .header-announcement-bar-wrapper {
   background-image: url(https://static1.squarespace.com/static/6638d89c40efc07873141ba2/t/665cb278c4208a2b25dd5cbd/1717351032754/YourHiddenGenius-Brain-Blur.jpg);
   position: relative;
@@ -56,7 +61,7 @@ nav > div > a {
   background-size: 50%;
   background-repeat: no-repeat;
 }
-//background for mobile
+/* //background for mobile */
 @media only screen and (max-width: 640px) {
   .header-announcement-bar-wrapper {
     background-image: url(https://static1.squarespace.com/static/6638d89c40efc07873141ba2/t/665cb278c4208a2b25dd5cbd/1717351032754/YourHiddenGenius-Brain-Blur.jpg);
@@ -67,7 +72,7 @@ nav > div > a {
   }
 }
 
-//header font and text
+/* //header font and text */
 .header-title-text > #site-title {
   color: white;
   font-weight: 550 !important;
@@ -85,7 +90,7 @@ section[data-section-id="66588ae5ff839a29b74d5ab4"] {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-//nav hover, that sometimes works? ugh squarespace.
+/* //nav hover, that sometimes works? ugh squarespace. */
 nav > div > a:hover,
 nav > div > div > div > a:hover {
   text-decoration: underline #f15e22 !important;
@@ -101,19 +106,18 @@ nav > div > div > div > a:hover {
 
 #block-yui_3_17_2_1_1715884132987_20060 {
   background: url(https://static1.squarespace.com/static/6638d89c40efc07873141ba2/t/665cb16b43d6f53c87818e5f/1717350763336/YourHiddenGenius-Brain-Blur.jpg);
-  background-position: 60% 35%;
+  background-position: 60% 40%;
   background-size: 175%;
-  filter: grayscale(10%);
-  text-shadow: 1px 1px 2px white;
+  text-shadow: 1px 1px 1px #ffbbaa;
 }
 
-//text-spacing divs
+/* //text-spacing divs */
 .fe-block-yui_3_17_2_1_1715883427850_6465 > div > div > div > h2 > span {
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
-//section borders
-//allsections
+/* //section borders
+//allsections */
 .section-border {
   border: 8px solid transparent;
   border-image: linear-gradient(90deg, rgba(237, 43, 114, 1) 0%, rgba(241, 94, 34, 1) 30%, rgba(255, 203, 4, 1) 100%);
@@ -123,6 +127,13 @@ nav > div > div > div > a:hover {
   border-left: 0;
   border-right: 0;
   box-shadow: 0px 1px 16px #25355140 !important;
+}
+
+/* //sections WITHOUT borders: */
+section[data-section-id="66b61f2f0f5a9275a8d0c901"] > .section-border,
+section[data-section-id="666c6fb329737c38a6ddf281"] > .section-border {
+  border: 0px;
+  border-image: none;
 }
 
 /*footer top border*/
@@ -139,8 +150,9 @@ footer {
 #jdb-ResetButton,
 #jdb-Submit-ButtonId,
 #jdb-PostSubmitButton {
-  outline: 0px !important;
+  outline: 0px solid #f15e22 !important;
   padding: 0.5rem;
+  transition: all 0.1s ease;
 }
 .jdb-animation-div > div > div > div > a:hover {
   color: #f26b34;
@@ -154,9 +166,10 @@ footer {
 #jdb-Submit-ButtonId:hover,
 #jdb-PostSubmitButton:hover {
   background-color: #25355110 !important;
-  outline: 2px solid #f15e22 !important;
+  outline: 1px solid #f15e22 !important;
   cursor: pointer;
   border-radius: 0.2rem !important;
+  transform: translateY(-2px) scale(1.005);
 }
 #jdb-ButtonId:focus,
 #jdb-ResetButton:focus,
@@ -176,37 +189,53 @@ footer {
 #jdb-Input {
   text-shadow: 0px 0px 0px !important;
 }
-
-//gallery
-.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta {
-  top: 25% !important;
-  left: 50% !important;
-  right: 0% !important;
-  min-width: 400px;
-  max-width: 800px;
-  background: none;
-  padding: 0 !important;
+/* //resources pages */
+/*section[data-section-id="67192e8bdeb7f71c987d07be"] > .section-border > .section-background  {
+background: rgb(249,248,243);
+background: linear-gradient(100deg, rgba(249,248,243,.6) 60%, rgba(237,43,114,0.3) 70%, 
+rgba(237,43,114,0.7) 75%, rgba(241,94,34,1) 85%, rgba(255,203,4,1) 95%);
+border-left: 8px solid rgb(237,43,114);
+}*/
+#block-a074d80ed38deb251ddc {
+  border-left: 4px solid gray;
 }
-.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta,
-.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside {
-  padding: 0 !important;
-  background: none;
+
+/* //gallery */
+
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div {
+  margin: 0 auto !important;
+}
+
+/*.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta {
+top: 300px !important;
+  min-width: 60%;
+max-width: 80%;
+display: flex !important;
+flex-direction:column !important;
+justify-content: flex-start!important;
+align-items: center !important;
+}
+
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta, .fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside{
+background: none;
 }
 .fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside > .meta-title {
-  font-size: 2.5rem !important;
-  font-weight: 800 !important;
-  text-shadow: 2px 2px 4px #222;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+font-size: 2.7rem !important;
+font-weight: 800 !important;
+text-shadow: 2px 2px 4px #222;
+letter-spacing:3px;
+text-transform:uppercase;
 }
-.meta > .meta-inside > .meta-description > p {
-  font-size: 22px !important;
+.fe-block-yui_3_17_2_1_1715884132987_45545 > div > div > div > div > div > .meta > .meta-inside > .meta-description > p {
+font-size: 2rem !important;
   text-shadow: 2px 2px 2px #222;
-}
+border-top: 2px solid white;
+}*/
 
-//video player vertical
+/* //video player vertical */
 .video-block .video-player {
-  padding-bottom: 120%;
+  padding-bottom: 94%;
+  box-shadow: 4px 4px 1rem 2px gray;
 }
 
 @media only screen and (max-width: 768px) {
@@ -231,22 +260,23 @@ footer {
   }
 }
 
-//author image shapes and borders
+/* //author image shapes and borders */
 .fe-6658981bdcfddc288d14d04c > div > div > div > .image-block-outer-wrapper {
-  filter: drop-shadow(0px 0px 2px rgba(241, 94, 34, 1)) drop-shadow(10px 10px 8px rgba(241, 94, 34, 0.05));
-  max-height: 250px;
-  min-height: 225px;
-  max-width: 250px;
-  min-width: 225px;
+  filter: drop-shadow(2px 2px 2px rgba(241, 94, 34, 1)) drop-shadow(10px 10px 8px rgba(241, 94, 34, 0.05));
+}
+@media only screen and (max-width: 768px) {
+  .fe-6658981bdcfddc288d14d04c > div > div > div > .image-block-outer-wrapper {
+    filter: drop-shadow(1px 1px 2px rgba(241, 94, 34, 1)) drop-shadow(10px 10px 8px rgba(241, 94, 34, 0.05));
+  }
 }
 
-//all-caps text spacing
+/* //all-caps text spacing */
 .fe-block-11933c07097dfe54ab24 > div > div > div > h3,
 .fe-block-b33e6fbc697829f2b958 > div > div > div > h2 {
   letter-spacing: 0.5px;
 }
 
-//button effects
+/* //button effects */
 .button-block {
   transition: all 0.2s ease;
 }
@@ -259,7 +289,7 @@ footer {
   color: white;
 }
 
-//nav flex
+/* //nav flex */
 
 @media only screen and (max-width: 1000px) {
   nav {
@@ -272,7 +302,7 @@ footer {
   }
 }
 
-//preorder your copy
+/* //preorder your copy  */
 @media only screen and (max-width: 768px) {
   #block-80f1a547d881da646c23,
   #block-f8c1338f9c53c931f9cd {
@@ -297,7 +327,7 @@ footer {
   }
 }
 
-//scroll up button
+/* //scroll up button */
 #wm-back-to-top {
   background: none;
   z-index: 999;
