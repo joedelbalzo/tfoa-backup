@@ -3,19 +3,41 @@
     border-top: 2px solid #ed2b72;
     border-bottom: 2px solid #ed2b72;
     outline: 1px solid #f15e22;
-    padding: 1rem;
+    padding: 2rem 2rem 4rem;
     vertical-align: top; /* Keeps the <h3> at the top */
   }
   .jdb-resources-table-data > h3 {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 auto 1rem;
     text-align: center;
   }
-  .jdb-resources-table-data > p {
+  .jdb-resources-table-data > div {
     height: 100%;
     margin: 0;
     display: table-cell;
+  }
+
+  .arrows-and-text-flex {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .jdb-resources-table {
+      width: 98%;
+      margin: 0 auto;
+    }
+    .jdb-resources-table-data {
+      font-size: 14px;
+      padding: 1rem 0.5rem 2rem;
+    }
+    .jdb-resources-table-data > h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 auto 1.5rem;
+      text-align: center;
+    }
   }
 </style>
 
@@ -24,88 +46,150 @@
     <tr class="jdb-resources-table-row">
       <td class="jdb-resources-table-data">
         <h3>Introverted Specialist</h3>
-        <p>
+        <div>
           Enjoys independent research; often become noteworthy experts in their field.
-          <br />
-          <br />
-          &#8594; You are an expert who devotes yourself to your work.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You are an expert who devotes yourself to your work.</p>
+          </div>
+        </div>
       </td>
       <td class="jdb-resources-table-data">
         <h3>Blended Specialist</h3>
-        <p>
+        <div>
           Enjoys sharing their expertise with an attentive audience; often make excellent tour guides and coaches.
-          <br />
-          <br />
-          &#8594; You know how to share your passions with others.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know how to share your passions with others.</p>
+          </div>
+        </div>
       </td>
       <td class="jdb-resources-table-data">
         <h3>Extroverted Specialist</h3>
-        <p>
+        <div>
           Enjoys being public experts; they make great advocates for a cause.
-          <br />
-          <br />
-          &#8594; You know how to stand up for something you believe in.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know how to stand up for something you believe in.</p>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="jdb-resources-table-row">
       <td class="jdb-resources-table-data">
         <h3>Introverted Liaison</h3>
-        <p>
+        <div>
           Enjoys independent research while keeping current on developments in their field.
-          <br />
-          <br />
-          &#8594; You know when to “come up for air” after being immersed in your work.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know when to “come up for air” after being immersed in your work.</p>
+          </div>
+        </div>
       </td>
       <td class="jdb-resources-table-data">
         <h3>Blended Liaison</h3>
-        <p>
+        <div>
           Enjoys a flexible approach to work, which allows them to both lead and follow.
-          <br />
-          <br />
-          &#8594; You know when it’s time to step up or follow someone else’s lead.
-        </p>
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know when it’s time to step up or follow someone else’s lead.</p>
+          </div>
+        </div>
       </td>
       <td class="jdb-resources-table-data">
         <h3>Extroverted Liaison</h3>
-        <p>
+        <div>
           Enjoys representing a cause they care about while listening to others’ perspectives and opinions.
-          <br />
-          <br />
-          &#8594; You know how to stand your ground while considering others’ opinions.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know how to stand your ground while considering others’ opinions.</p>
+          </div>
+        </div>
       </td>
     </tr>
     <tr class="jdb-resources-table-row">
       <td class="jdb-resources-table-data">
         <h3>Introverted Generalist</h3>
-        <p>
+        <div>
           Enjoys collaborating on small teams or one-on-one.
-          <br />
-          <br />
-          &#8594; You know how to listen to others and keep an open mind.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know how to listen to others and keep an open mind.</p>
+          </div>
+        </div>
       </td>
       <td class="jdb-resources-table-data">
         <h3>Blended Generalist</h3>
-        <p>
+        <div>
           Enjoys teamwork and networking with others.
-          <br />
-          <br />
-          &#8594; You know how to communicate with all types of people.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know how to communicate with all types of people.</p>
+          </div>
+        </div>
       </td>
       <td class="jdb-resources-table-data">
         <h3>Extroverted Generalist</h3>
-        <p>
+        <div>
           Enjoys gather and sharing perspectives and knows how to build relationships.
-          <br />
-          <br />
-          &#8594; You know how to bring people together to work toward a common goal.
-        </p>
+
+          <div class="arrows-and-text-flex">
+            <img
+              style="margin-right: 4px"
+              src="https://images.squarespace-cdn.com/content/6638d89c40efc07873141ba2/ebbd34f3-8561-486b-b585-591b8e98a21c/SingleRightArrow.png?content-type=image%2Fpng"
+              width="24px"
+              height="32px"
+            />
+            <p>You know how to bring people together to work toward a common goal.</p>
+          </div>
+        </div>
       </td>
     </tr>
   </tbody>
