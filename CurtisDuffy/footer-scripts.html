@@ -1,0 +1,117 @@
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "Fireproof: Memoir of a Chef",
+    "description": "World-renowned, Michelin-starred Chef Curtis Duffy shares his journey as a Chicago restaurateur and food expert with his trademark intensity and candor. Fans of 'Kitchen Confidential' by Anthony Bourdain, celebrity chefs, and memoirs will love this raw and inspiring true story.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Curtis Duffy",
+        "description": "Curtis Duffy is a world-renowned, Michelin-starred chef and restaurant owner. Born in Columbus, Ohio, Duffy attended culinary school. He later opened restaurants Grace, Reve Burger, which are now closed, and Ever restaurant and After lounge. Netflix released For Grace — a documentary about Duffy’s life story and his journey in becoming a critically acclaimed chef. A former judge on the Chicago Restaurant Pastry Competition, Top Chef: Colorado, and Top Chef, Duffy’s food and life story has also been featured in the Hulu show The Bear. Duffy spends his time between Chicago and Miami with his daughters, his partner Jennifer Perez, and her children. Fireproof is his first book.",
+        "jobTitle": "Chef & Author",
+        "alumniOf": "Columbus State Community College",
+        "sameAs": [
+          "https://en.wikipedia.org/wiki/Curtis_Duffy",
+          "https://www.instagram.com/curtisduffy",
+          "https://www.ever-restaurant.com/"
+        ]
+      },
+      {
+        "@type": "Person",
+        "name": "Jeremy Wagner",
+        "description": "Jeremy Wagner is a guitarist, songwriter, and bestselling author. His debut novel The Armageddon Chord is the recipient of the Hiram Award and received a Stoker Award nomination. His novel Rabid Heart was nominated for a Splatterpunk Award for Best Horror Novel, received an Independent Publisher’s IPPY Award for both Best Horror e-Book, and was a Next Generation Book Award finalist for Best Horror Novel. Wagner is releasing two books in 2025: including a new dark-crime novel Wretch and Fireproof: A Memoir of a Life on Fire with Chef Curtis Duffy. Living between Chicago and Miami with his wife Kym, Wagner has released eight albums with his death metal band Broken Hope.",
+        "jobTitle": "Author & Musician",
+        "sameAs": ["https://www.jeremy-wagner.com/", "https://www.jeremyxwagner.com/", "https://www.instagram.com/jeremyxwagner"]
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "Dead Sky Publishing",
+      "sameAs": "https://deadskypublishing.com"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Independent Publishers Group (IPG)",
+      "url": "https://www.ipgbook.com/"
+    },
+    "isbn": "9781639511358",
+    "bookEdition": "First Edition",
+    "bookFormat": "https://schema.org/Hardcover",
+    "datePublished": "2024-05-15",
+    "genre": ["Memoir", "Biography & Autobiography", "Culinary", "Fine Dining"],
+    "about": [
+      "Michelin-starred chefs",
+      "Chicago fine dining",
+      "Molecular gastronomy",
+      "James Beard Award winners",
+      "Celebrity chefs",
+      "Kitchen Confidential",
+      "Fireproof Memoir"
+    ],
+    "image": "https://curtisduffy.com/book",
+    "url": "https://curtisduffy.com/book",
+    "sameAs": [
+      "https://www.goodreads.com/book/show/1234567-fireproof",
+      "https://www.amazon.com/dp/1234567890",
+      "https://www.barnesandnoble.com/w/fireproof-curtis-duffy/123456789"
+    ],
+    "review": [
+      {
+        "@type": "Review",
+        "reviewBody": "Anthony Bourdain’s Kitchen Confidential meets Sons of Anarchy.",
+        "author": {
+          "@type": "Person",
+          "name": "Andrew Blauner"
+        }
+      },
+      {
+        "@type": "Review",
+        "reviewBody": "How Chef Duffy defeated his demons and fulfilled his muse will genuinely blow your mind.",
+        "author": {
+          "@type": "Person",
+          "name": "Joel McIver"
+        }
+      }
+    ],
+    "relatedTopics": [
+      "Michelin-starred chefs",
+      "Fine dining restaurants",
+      "Chicago restaurants",
+      "Molecular gastronomy",
+      "James Beard Foundation",
+      "Celebrity chefs",
+      "Top Chef",
+      "Iron Chef"
+    ]
+  }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Match the image by exact URL in the `data-image` attribute
+    const imageAlts = [
+      {
+        imageUrl:
+          "https://images.squarespace-cdn.com/content/v1/675701fa63227f2eeb4ee2a9/47ca8c8d-a4ea-4de2-8c19-111b6f178cfb/cd-smile.jpg",
+        altText: "World-renowned, James Beard Award-winning, Michelin-starred chef, Curtis Duffy.",
+      },
+      {
+        imageUrl:
+          "https://images.squarespace-cdn.com/content/v1/675701fa63227f2eeb4ee2a9/e09d5c0c-229b-453b-afe5-1aa987f256f5/Ever-0187.jpg",
+        altText: "Chef Curtis Duffy was ranked one of the “50 Most Powerful People in American Fine Dining” in 2024 by the Robb Report.",
+      },
+      {
+        imageUrl:
+          "https://images.squarespace-cdn.com/content/v1/675701fa63227f2eeb4ee2a9/aa94ad0f-8397-4057-8f95-9ea013efa464/Duffy-Construction-Cropped.jpg",
+        altText:
+          "“How Chef Duffy defeated his demons and fulfilled his muse will genuinely blow your mind.”—Joel McIver, Bestselling Author of Justice for All: The Truth About Metallica",
+      },
+    ];
+
+    imageAlts.forEach(({ imageUrl, altText }) => {
+      const img = document.querySelector(`img[data-image="${imageUrl}"]`);
+      if (img) img.alt = altText;
+    });
+  });
+</script>
