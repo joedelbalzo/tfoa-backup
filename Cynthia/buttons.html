@@ -1,0 +1,170 @@
+<style>
+  .jdb-9-button-home-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 140px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .jdb-9-button-home-container > a {
+    color: white;
+    font-size: calc(8px + 0.6vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-wrap: break-word;
+    text-align: center;
+    max-width: 24%;
+    min-width: 23%;
+    height: 60px;
+    padding: 0.1rem;
+    border-radius: 0.3rem;
+    background-color: #f15e22;
+    transition: all 0.3s ease;
+  }
+  .jdb-9-button-home-container > a:hover {
+    transform: translateY(-2px) scale(1.025);
+    opacity: 1 !important;
+    color: white;
+  }
+
+  @media screen and (max-width: 900px) {
+    .jdb-9-button-home-container {
+      gap: 6px;
+      height: 200px;
+    }
+    .jdb-9-button-home-container > a {
+      height: 60px;
+      max-width: 44%;
+      min-width: 43%;
+      font-size: calc(8px + 1.5vw);
+    }
+  }
+</style>
+
+<div class="jdb-9-button-home-container">
+  <a href="https://www.amazon.com/dp/B0DPV1MBTPe" target="_blank">AMAZON</a>
+  <a href="https://www.astoriabookshop.com/item/f9p-FNF8Slo_Zco_env2Dw" target="_blank">ASTORIA BOOKSHOP</a>
+  <a href="https://www.barnesandnoble.com/w/love-bites-cynthia-st-aubin/1136885820?ean=9781250407115" target="_blank">BARNES & NOBLE</a>
+  <a href="https://www.booksamillion.com/p/Love-Bites/Cynthia-St-Aubin/9781250407115" target="_blank">BOOKS-A-MILLION</a>
+  <a
+    href="https://bookshop.org/p/bookslove-sucks-cynthia-st-aubin/f6612b3494bfda1d?ean=9781250407153&digital=t&affiliate=3214"
+    target="_blank"
+    >BOOKSHOP
+  </a>
+
+  <a href="https://meetcutebookshop.com/item/f9p-FNF8Slo_Zco_env2Dw" target="_blank">MEET CUTE ROMANCE</a>
+  <a href="https://wordbookstores.com/book/9781250407115" target="_blank">WORD BOOKSTORES</a>
+  <a
+    href="https://www.target.com/p/love-bites-tails-from-the-alpha-art-gallery-by-cynthia-st-aubin-paperback/-/A-94465986#lnk=sametab"
+    target="_blank"
+    >TARGET</a
+  >
+  <a
+    href="https://www.walmart.com/ip/Tails-from-the-Alpha-Art-Gallery-Love-Bites-Book-1-Paperback-9781250407115/14665004273"
+    target="_blank"
+    >WALMART</a
+  >
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const books = {
+      "The Case Files of Dr. Matilda Schmidt, Paranormal Psychologist": {
+        url: "/books#dr-matilda-schmidt",
+        bgColor: "#dc487c",
+        textColor: "#f5f5f5",
+      },
+      "Townsend Harbor": {
+        url: "/books#townsend-harbor",
+        bgColor: "#522a82",
+        textColor: "#f5f5f5",
+      },
+      "Renaud Brothers": {
+        url: "/books#renaud-brothers",
+        bgColor: "#db9929",
+        textColor: "#f5f5f5",
+      },
+      "Kane Heirs": {
+        url: "/books#kane-heirs",
+        bgColor: "#34416b",
+        textColor: "#f5f5f5",
+      },
+      "Jane Avery": {
+        url: "/books#jane-avery",
+        bgColor: "#f27da0",
+        textColor: "#f5f5f5",
+      },
+      "The Witches of Port Townsend": {
+        url: "/books#anthologies",
+        bgColor: "#3d42ad",
+        textColor: "#f5f5f5",
+      },
+      Anthologies: {
+        url: "/books#anthologies",
+        bgColor: "#367eec",
+        textColor: "#f5f5f5",
+      },
+    };
+
+    document.querySelectorAll(".sqs-block-image").forEach((block) => {
+      const img = block.querySelector("img");
+      if (!img || !img.alt) return;
+
+      const title = img.alt.trim().split(":")[0].trim();
+      const book = books[title];
+      if (!book) return;
+
+      const imageContainer = block.querySelector(".fluid-image-container");
+      if (!imageContainer) return;
+
+      block.style.cursor = "pointer";
+      block.onclick = () => (window.location.href = book.url);
+
+      img.classList.add("book-image");
+
+      const overlay = document.createElement("div");
+      overlay.className = "book-overlay";
+      overlay.innerText = title;
+      overlay.style.backgroundColor = book.bgColor;
+      overlay.style.color = book.textColor;
+
+      imageContainer.appendChild(overlay);
+    });
+  });
+</script>
+
+<style>
+  .book-image {
+    transition: filter 0.3s ease;
+  }
+
+  .sqs-block-image:hover .book-image {
+    filter: grayscale(70%) brightness(0.9);
+  }
+
+  .book-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    background: #f5f5f5;
+    color: #050505;
+    font-weight: 700;
+    text-align: center;
+    padding: 1.75rem 0.5rem;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .sqs-block-image:hover .book-overlay {
+    opacity: 1;
+  }
+</style>
