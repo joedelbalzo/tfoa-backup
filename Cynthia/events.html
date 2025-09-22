@@ -1,0 +1,260 @@
+<!-- Squarespace Code Block: Events -->
+<div id="events-root"></div>
+
+<style>
+  #events-root {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px 0;
+  }
+  .ev {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 28px;
+    align-items: start;
+    padding: 24px 0;
+  }
+  .ev--noimg {
+    grid-template-columns: 1fr;
+  }
+  .ev__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+    display: block;
+  }
+  .ev__title {
+    margin: 0 0 8px;
+    font-size: clamp(18px, 2.5vw, 26px);
+    line-height: 1.15;
+    text-decoration: underline;
+  }
+  .ev__row {
+    margin: 4px 0;
+    font-weight: 500;
+  }
+  .ev__desc {
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  .ev__divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 28px 0;
+  }
+  .ev__section {
+    margin: 24px 0 8px;
+  }
+  @media (max-width: 800px) {
+    .ev {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // ====== EDIT ONLY THIS ARRAY ======
+  const events = [
+    // vvvvv COPY THIS TEMPLATE ENTIRELY, including the brackets and all commas! vvvvvv
+    {
+      title: "title here",
+      date: "YYYY-MM-DD or MM/DD/YYYY",
+      startTime: "hh:mm AM/PM",
+      endTime: "hh:mm AM/PM",
+      location: "Name of place or virtual/digital",
+      description: "Description here",
+      image: "Image URL here",
+      imageDescription: "One sentence description of the image",
+    },
+    // ^^^^^^^ END OF COPY ^^^^^^^
+
+    {
+      title: "NEIBA Fall Trade Show: Author Reception",
+      date: "2025-09-09",
+      startTime: "5:30 PM",
+      endTime: "7:00 PM",
+      location: "The Doubletree Hilton, Downtown Manchester, NH",
+      description: "Details: https://newenglandbooks.org/page/fallcon-attendees",
+      image: "https://cdn.ymaws.com/newenglandbooks.org/resource/resmgr/fall_conference/2025/screenshot_2025-03-08_at_8.1.png",
+      imageDescription: "NEIBA Fall Conference",
+    },
+    {
+      title: "New York Comic Con: Scream Reads: Books to Keep You Up at Night (panel)",
+      date: "10/11/2025",
+      startTime: "6:00 PM",
+      endTime: "",
+      location: "New York, NY",
+      description:
+        "Other panelists pending; signing to follow panel. Appearance: https://www.newyorkcomiccon.com/en-us/guests/guest-profile.html?gtID=366968&guest-name=Cynthia-St-Aubin",
+      image:
+        "https://images.squarespace-cdn.com/content/v1/64b171a92c3efb4093625e39/126f9ca0-4798-45fd-86a0-59f4682ed1b4/NYCC21-Logo-RGB-WhiteTM.png.coredownload.216184314.png",
+      imageDescription: "New York Comic Con logo",
+    },
+    {
+      title: "Southern Festival of Books",
+      date: "2025-10-18",
+      startTime: "",
+      endTime: "",
+      location: "Nashville, TN",
+      description: "Oct 18–19. Panel/signing details TBD. https://www.sofestofbooks.org/",
+      image:
+        "https://images.squarespace-cdn.com/content/6830d78c6c14af711ed86a18/e5002da8-0ec0-476e-a028-743b882aaebf/sfb-app-top_1663769927.png?content-type=image%2Fpng",
+      imageDescription: "Poster for Southern Festival of Books",
+    },
+    {
+      title: "Coastal Magic Convention",
+      date: "2026-02-19",
+      startTime: "",
+      endTime: "",
+      location: "Daytona Beach, FL",
+      description: "Feb 19–22, 2026. http://www.CoastalMagicConvention.com",
+      image: "https://coastalmagicconvention.com/wp-content/uploads/2025/03/2026websiteheader7.jpg?w=2048",
+      imageDescription: "Coastal Magic Convention",
+    },
+  ];
+  // END OF EVENTS===================================
+
+  const RE_ISO = /^\d{4}-\d{2}-\d{2}$/;
+
+  function toIsoMaybe(s) {
+    const m = String(s || "")
+      .trim()
+      .match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/);
+    if (!m) return s;
+    const y = m[3].length === 2 ? 2000 + +m[3] : +m[3];
+    const mm = String(m[1]).padStart(2, "0");
+    const dd = String(m[2]).padStart(2, "0");
+    return `${y}-${mm}-${dd}`;
+  }
+
+  function parseIso(iso) {
+    if (!RE_ISO.test(iso)) return NaN;
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function fmtDate(d) {
+    return d.toLocaleDateString(undefined, { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+  }
+
+  function startOfToday() {
+    const n = new Date();
+    return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  }
+
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  // --- safe linkify (URLs → <a>, everything else escaped) ---
+  function escapeHTML(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+  function linkify(s) {
+    if (!s) return "";
+    const URL_RE = /(https?:\/\/[^\s<]+)/g;
+    const parts = String(s).split(URL_RE);
+    let out = "";
+    for (let i = 0; i < parts.length; i++) {
+      if (i % 2 === 1) {
+        const raw = parts[i];
+        const href = raw.replace(/[),.;:!?]+$/, ""); // trim trailing punctuation
+        const tail = raw.slice(href.length);
+        out += `<a href="${href}" target="_blank" rel="noopener noreferrer">${escapeHTML(href)}</a>${escapeHTML(tail)}`;
+      } else {
+        out += escapeHTML(parts[i]);
+      }
+    }
+    return out;
+  }
+
+  function card(e) {
+    const wrap = el("article", "ev");
+
+    // media (defensive)
+    const url = (e.image || "").trim();
+    if (url) {
+      const media = el("div", "ev__media");
+      const img = new Image();
+      img.className = "ev__img";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.src = url;
+      img.alt = e.imageDescription || e.title || "";
+      img.onerror = () => {
+        media.remove();
+        wrap.classList.add("ev--noimg");
+      };
+      media.appendChild(img);
+      wrap.appendChild(media);
+    } else {
+      wrap.classList.add("ev--noimg");
+    }
+
+    const body = el("div", "ev__body");
+    body.appendChild(el("h3", "ev__title", e.title));
+    body.appendChild(el("div", "ev__row", fmtDate(e._d)));
+
+    const time = (e.startTime || "") + (e.startTime && e.endTime ? " – " : "") + (e.endTime || "");
+    if (time) body.appendChild(el("div", "ev__row", time));
+
+    if (e.location) {
+      const loc = el("div", "ev__row");
+      loc.innerHTML = linkify(e.location);
+      body.appendChild(loc);
+    }
+
+    if (e.description) {
+      const desc = el("p", "ev__desc");
+      desc.innerHTML = linkify(e.description);
+      body.appendChild(desc);
+    }
+
+    wrap.appendChild(body);
+    return wrap;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const root = document.getElementById("events-root");
+
+    const items = events
+      .slice(1) // ignore template
+      .map((e) => {
+        const iso = RE_ISO.test(e.date) ? e.date : toIsoMaybe(e.date);
+        const d = parseIso(iso);
+        if (!(d instanceof Date) || isNaN(d)) {
+          console.warn("Bad date (use YYYY-MM-DD or MM/DD/YYYY):", e.title, e.date);
+          return null;
+        }
+        return { ...e, _iso: iso, _d: d };
+      })
+      .filter(Boolean);
+
+    const today = startOfToday();
+    const upcoming = items.filter((e) => e._d >= today).sort((a, b) => a._d - b._d);
+    const past = items.filter((e) => e._d < today).sort((a, b) => b._d - a._d);
+
+    const addList = (label, list) => {
+      const h = el("h3", "ev__section", label);
+      root.appendChild(h);
+      if (!list.length) {
+        root.appendChild(el("p", "ev__row", "No events."));
+        return;
+      }
+      list.forEach((e) => root.appendChild(card(e)));
+    };
+
+    addList("Upcoming Events", upcoming);
+    if (upcoming.length && past.length) root.appendChild(el("hr", "ev__divider"));
+    addList("Past Events", past);
+  });
+</script>
