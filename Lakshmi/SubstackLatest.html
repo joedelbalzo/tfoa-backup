@@ -1,0 +1,51 @@
+<!-- Working Substack Feed via rss2json -->
+<div id="lakshmi-substack-feed"></div>
+
+<style>
+  .post-link:hover,
+  .post-link > *:hover {
+    color: #4a0000;
+  }
+</style>
+
+<script>
+  const generateFeed = async () => {
+    try {
+      const url =
+        "https://api.rss2json.com/v1/api.json?rss_url=https://drlakshmikrishnan.substack.com/feed&api_key=zil7t7ckrdihjfqzomekp06nhyivce5iohumt2ra";
+      const res = await fetch(url);
+      const data = await res.json();
+
+      const feed = document.getElementById("lakshmi-substack-feed");
+      const posts = [...data.items].slice(0, 4);
+      let html = '<div style="display:flex;flex-direction:column;gap:2rem;">';
+
+      posts.forEach((post) => {
+        html += `
+          <div style="display:flex;gap:1.5rem;align-items:flex-start;border-bottom:1px solid #eee;padding-bottom:1.5rem;">
+            <div style="flex:1;">
+              <a class="post-link" href="${post.link}" target="_blank" style="text-decoration:none;color:#111;">
+                <h4 style="margin:0 0 0.5rem;">${post.title}</h4>
+              </a>
+              <p style="margin:0 0 0.5rem;font-size:1rem;color:#333;">${post.description}</p>
+              <p style="margin:0;font-size:0.9rem;color:#666;">
+                ${new Date(post.pubDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })} &bull; Dr. Lakshmi Krishnan
+              </p>
+            </div>
+            <div style="flex-shrink:0;width:150px;height:120px;overflow:hidden;border-radius:4px;">
+              <img src="${post.enclosure?.link || ""}" alt="${post.title}" style="width:100%;height:100%;object-fit:cover;" />
+            </div>
+          </div>
+        `;
+      });
+
+      html += "</div>";
+      feed.innerHTML = html;
+    } catch (err) {
+      console.error("Feed failed:", err);
+      document.getElementById("lakshmi-substack-feed").innerText = "Unable to load Substack posts at this time.";
+    }
+  };
+
+  generateFeed();
+</script>

@@ -1,0 +1,323 @@
+<!-- LAKSHMI! Please go down to line 81 to do any editing. You don't need to touch anything above! -->
+
+<style>
+  /* Container for all cards */
+  .jdb-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .jdb-grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .jdb-grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Card styling */
+  .jdb-grid {
+    display: grid;
+    grid-template-rows: minmax(100px, auto) auto auto;
+    gap: 0.5rem;
+    overflow: visible;
+    align-content: start; /* keeps all rows starting from top */
+    align-items: start;
+    border-bottom: 1px solid #4a000040;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .jdb-grid img {
+    grid-row: 1;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 3px 2px 3px rgba(100, 100, 100, 0.5);
+    transition: 0.2s all ease;
+  }
+
+  .jdb-grid img:hover {
+    transform: scale(1.005) translateY(-1px);
+    filter: saturate(1);
+  }
+
+  .jdb-grid h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  .jdb-grid > a > h4:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  .jdb-grid p {
+    font-size: 0.9rem;
+    grid-row: 3;
+    margin: 0;
+    color: #565666;
+    font-weight: 300;
+  }
+  @media (max-width: 768px) {
+    .jdb-grid img {
+      min-height: auto;
+    }
+  }
+
+  .jdb-grid-container > *:not(.jdb-grid) {
+    display: contents !important; /* removes rogue elements from the grid flow */
+  }
+</style>
+
+<!-- HI LAKSHMI. START DOING STUFF HERE!! -->
+<!-- HERE IS A TEMPLATE! USE THIS TEMPLATE! 
+Remember, HTML tags need to be opened, closed, and nested appropriately. 
+Each card has the following structure:
+
+  <div class="jdb-grid">
+    <a target="_blank" href="LINK TO THE ARTICLE">
+      <img src="LINK TO THE IMAGE"/> 
+    </a>
+    <a target="_blank" href="LINK TO THE ARTICLE AGAIN">
+    <h4>TITLE OF THE ARTICLE</h4>
+    </a>
+    <p>PUBLICATION, DATE.</p>
+  </div>
+
+A couple of notes:
+The first link fully wraps the image.
+The image is a "self-closing" object, so that's why it has a /> at the end instead of a </img> tag
+The second link fully wraps the title.
+Everything is closed with one </div> closing tag.
+
+Feel free to copy and paste this
+End of notes. Continue working below!  -->
+
+<div class="jdb-grid-container">
+  <div class="jdb-grid">
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/6a6ac989-9160-4b0e-977c-ec7a4608cc59/jama.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <h4>The New Clinician-Scholars—Dual Training in Medicine and Humanities Drives Health Research Innovation</h4>
+    </a>
+    <p>JAMA, 2025.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://academic.oup.com/jhmas/article-abstract/79/4/300/7664066?redirectedFrom=fulltext&login=false">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/34ca6214-7ffc-4ab6-a9d1-e7b0ecce0545/journal-of-history-and-med.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://academic.oup.com/jhmas/article-abstract/79/4/300/7664066?redirectedFrom=fulltext&login=false">
+      <h4>Pandemic Forms</h4>
+    </a>
+    <p>Journal of the History of Medicine and Allied Sciences, 2024</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.bmj.com/content/bmj/387/bmj.q2583.full.pdf">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/4eb8684f-9261-4e1e-a603-a33515f6e46a/BMJ+1000.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <h4>From plague to planetary crisis: climate fiction before cli-fi</h4>
+    </a>
+    <p>BMJ, 2024.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/3d80271b-6d72-4ac3-98e8-0226432b2299/bmj-medical-humanities.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <h4>
+        Virtuosic Craft or Clerical Labour: The Rise of the Electronic Health Record and Challenges to Physicians' Professional Identity
+        (1950-2022).
+      </h4>
+    </a>
+    <p>BMJ Medical Humanities, 2023.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/4c0728f6-6683-410e-8f48-cc43cca5c450/lit-and-med.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://muse.jhu.edu/article/911453">
+      <h4>The Case of the Peculiar Story: Medical Investigation and the Detective in Edgar Allan Poe and Marguerite Duras</h4>
+    </a>
+    <p>Literature and Medicine. 2023.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://academic.oup.com/jvc/article/27/2/302/6563702?login=true">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/b5da9001-97f4-4da0-9c02-0a2b3ed39215/journal-of-victorian-culture.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://academic.oup.com/jvc/article/27/2/302/6563702?login=true">
+      <h4>An Extraordinary Sequel: The “Russian” Influenza and Enduring Sequelae in Victorian Culture.</h4>
+    </a>
+    <p>Journal of Victorian Culture, 2022</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/34665089/">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/993daea7-6091-4b5e-81c7-32c6290703f5/journal-of-law-med-ethics.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/34665089/">
+      <h4>Person Under Investigation: Detecting Malingering and a Diagnostics of Suspicion in Fin-de-Siècle Britain.</h4>
+    </a>
+    <p>Journal of Law, Medicine & Ethics, 2021</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://medicalhealthhumanities.com/2020/11/09/medical-humanities-in-a-pandemic-essential-and-critical/">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/3ba6a131-e1f9-47b4-b218-e67ac98a9dac/synapsis.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://medicalhealthhumanities.com/2020/11/09/medical-humanities-in-a-pandemic-essential-and-critical/">
+      <h4>Medical Humanities in a Pandemic: Essential and Critical</h4>
+    </a>
+    <p>Synapsis: A Health Humanities Journal, 2020</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.thelancet.com/article/S0140-6736(20)32134-6/fulltext">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/b2094aaf-cc22-4a2e-bdf2-31197b0e3dd1/carousel-lancet-logo.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.thelancet.com/article/S0140-6736(20)32134-6/fulltext">
+      <h4>Taking Pandemic Sequelae Seriously: From the Russian Influenza to COVID-19 Long-Haulers</h4>
+    </a>
+    <p>The Lancet, 2020.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.acpjournals.org/doi/10.7326/M20-2223">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/ca5e1fa9-3efe-4627-af19-5caf5bbcc3ab/annals.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.acpjournals.org/doi/10.7326/M20-2223">
+      <h4>Historical Insights on COVID-19, 1918 Influenza, and Racial Disparities: Illuminating a Path Forward</h4>
+    </a>
+    <p>Annals of Internal Medicine, 2020.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)32098-7/abstract">
+      <img
+        alt="vintage sketch of a vampire"
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/db6097fb-2cea-45c9-be5a-c004c2e36ed6/vampire.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(19)32098-7/abstract">
+      <h4>Physicians, Oaths, and Vampires</h4>
+    </a>
+    <p>The Lancet, 2019</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32061-0/abstract">
+      <img
+        alt="vintage artist rendering of Emily Bronte, author of Wuthering Heights"
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/1e4747b4-6ef5-47cf-a928-798d6435b0a8/emily_brontes_lost_second_novel_1050x700.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32061-0/abstract">
+      <h4>Understanding Heartbreak: from Takotsubo to Wuthering Heights</h4>
+    </a>
+    <p>The Lancet, 2018</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.sciencedirect.com/science/article/pii/S2452301116300360">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/e54bc62c-f400-4452-95c8-b088e0d63543/health-professions-education.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.sciencedirect.com/science/article/pii/S2452301116300360">
+      <h4>Developing an Introductory Radiology Clerkship at Perdana University Graduate School of Medicine in Kuala Lumpur, Malaysia.</h4>
+    </a>
+    <p>Health Professions Education, 2017.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/24900921/">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/233c5232-2d6b-458d-820c-cee54a350105/tuber.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://pubmed.ncbi.nlm.nih.gov/24900921/">
+      <h4>
+        Gender-related barriers to and delays in accessing tuberculosis diagnostic and treatment services: a systematic review of
+        qualitative studies.
+      </h4>
+    </a>
+    <p>Tuberculosis Research and Treatment, 2014</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.jstor.org/stable/43592686">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/52622032-7b22-4724-aea2-e5cd1dbfb1bd/victorian-poetry.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.jstor.org/stable/43592686">
+      <h4>Robert Browning and the Intelligent Uses of Anger in The Ring and the Book.</h4>
+    </a>
+    <p>Victorian Poetry, 2014.</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a
+      target="_blank"
+      href="https://www.cambridge.org/core/journals/victorian-literature-and-culture/article/abs/element-of-living-storm-swinburne-and-the-brontes/E97BBDEA912F1ECADA6739E7D35A8DC2"
+    >
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/9802925a-748d-4c54-8f81-c8f9496361a3/vlc.jpg?format=500w"
+      />
+    </a>
+    <a
+      target="_blank"
+      href="https://www.cambridge.org/core/journals/victorian-literature-and-culture/article/abs/element-of-living-storm-swinburne-and-the-brontes/E97BBDEA912F1ECADA6739E7D35A8DC2"
+    >
+      <h4>The Element of Living Storm: Swinburne and the Brontës.</h4>
+    </a>
+    <p>Victorian Literature and Culture, 2013</p>
+  </div>
+
+  <div class="jdb-grid">
+    <a target="_blank" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32061-0/abstract">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/5f22fcc2a852cb79e5a77c3d/be14eb6a-820c-4223-a306-98b8cb90031b/modern-lang.jpg?format=500w"
+      />
+    </a>
+    <a target="_blank" href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32061-0/abstract">
+      <h4>Editing Swinburne’s Border Ballads</h4>
+    </a>
+    <p>Modern Language Review, 2009</p>
+  </div>
+</div>
