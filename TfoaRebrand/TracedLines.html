@@ -1,0 +1,244 @@
+<!-- Main One under "We're the Only Full Service..." -->
+
+<style>
+  .curve-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 550px;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .curve-svg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+  }
+
+  .curve-base {
+    opacity: 0.3;
+  }
+
+  /* --- ABOVE 1601px — move DOWN 7rem --- */
+  @media screen and (min-width: 1601px) {
+    .curve-container {
+      top: 7rem;
+    }
+  }
+
+  /* --- 1501px to 1600px — move DOWN 5rem --- */
+  @media screen and (min-width: 1501px) and (max-width: 1600px) {
+    .curve-container {
+      top: 5rem;
+    }
+  }
+
+  /* --- 1284px to 1500px — move DOWN 3rem --- */
+  @media screen and (min-width: 1284px) and (max-width: 1500px) {
+    .curve-container {
+      top: 3rem;
+    }
+  }
+
+  /* --- 768px to 960px — move UP 2rem --- */
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    .curve-container {
+      top: -2rem;
+    }
+  }
+  /* --- 500px to 768px — move UP 2rem --- */
+  @media screen and (min-width: 300px) and (max-width: 767px) {
+    .curve-container {
+      top: -13rem;
+      left: -8rem;
+    }
+  }
+</style>
+<div class="curve-container">
+  <svg viewBox="0 0 1400 550" class="curve-svg" preserveAspectRatio="xMidYMid meet">
+    <path
+      class="curve-base"
+      fill="none"
+      stroke="rgba(91,37,53,1)"
+      stroke-width="5"
+      stroke-linecap="round"
+      d="M 1250,40 C 1270,42 1310,65 1290,98 C 1270,131 1210,156 1030,171 C 850,186 810,196 775,209 C 740,222 708,247 675,302 C 642,357 645,417 645,482 L 645,635" />
+    <path
+      id="curveReveal"
+      fill="none"
+      stroke="rgba(91,37,53,1)"
+      stroke-width="5"
+      stroke-linecap="round"
+      d="M 1250,40 C 1270,42 1310,65 1290,98 C 1270,131 1210,156 1030,171 C 850,186 810,196 775,209 C 740,222 708,247 675,302 C 642,357 645,417 645,482 L 645,635" />
+  </svg>
+</div>
+<script>
+  (function () {
+    const base = document.querySelector(".curve-base");
+    const reveal = document.getElementById("curveReveal");
+    const container = document.querySelector(".curve-container");
+    if (!reveal || !container) return;
+
+    base.setAttribute("stroke-linecap", "round");
+    reveal.setAttribute("stroke-linecap", "round");
+
+    const pathLength = reveal.getTotalLength();
+    reveal.style.strokeDasharray = pathLength;
+    reveal.style.strokeDashoffset = pathLength;
+    reveal.style.strokeLinecap = "round";
+
+    let ticking = false;
+
+    function ease(p) {
+      if (p < 0.92) {
+        return p * 1.01;
+      }
+      const remaining = (p - 0.92) / 0.08;
+      return 0.9384 + remaining * 0.0616;
+    }
+
+    function update() {
+      const rect = container.getBoundingClientRect();
+      const winHeight = window.innerHeight;
+
+      const scrollStart = rect.bottom - winHeight - 200;
+      const scrollEnd = rect.top + 200;
+      const scrollRange = scrollEnd - scrollStart;
+      const currentScroll = -scrollStart;
+
+      let p = currentScroll / scrollRange;
+      if (p < 0) p = 0;
+      if (p > 1) p = 1;
+
+      const eased = ease(p);
+      const drawLength = pathLength * eased;
+      const offset = pathLength - drawLength;
+
+      reveal.style.strokeDashoffset = offset;
+
+      ticking = false;
+    }
+
+    update();
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      {passive: true}
+    );
+
+    window.addEventListener("resize", () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    });
+  })();
+</script>
+
+<!-- Heading Underlines -->
+<style>
+  .underline-container-1 {
+    position: relative;
+    width: 350px;
+    height: 50px;
+    margin: 0 auto;
+    pointer-events: none;
+  }
+
+  .underline-svg-1 {
+    width: 100%;
+    height: 100%;
+  }
+
+  .underline-base-1 {
+    opacity: 0.3;
+    stroke-linecap: round;
+  }
+
+  .underline-reveal-1 {
+    stroke-linecap: round;
+  }
+</style>
+<div class="underline-container-1">
+  <svg viewBox="0 0 310 40" class="underline-svg-1" preserveAspectRatio="none">
+    <path
+      class="underline-base-1"
+      fill="none"
+      stroke="rgba(91,37,53,1)"
+      stroke-width="2"
+      d="M5 24.2592C26.233 20.2879 47.7083 16.9968 69.135 13.8421C98.0469 9.5853 128.407 4.02322 158.059 5.14674C172.583 5.69708 187.686 8.66104 201.598 11.9696C207.232 13.3093 215.437 14.9471 220.137 18.3619C224.401 21.4596 220.737 25.6575 217.184 27.6168C208.309 32.5097 197.199 34.281 186.698 34.8486C183.159 35.0399 147.197 36.2657 155.105 26.5837C158.11 22.9053 162.993 20.6229 167.764 18.7924C178.386 14.7164 190.115 12.1115 201.624 10.3984C218.367 7.90626 235.528 7.06127 252.521 7.49276C258.455 7.64343 264.389 7.92791 270.295 8.41825C280.321 9.25056 296 10.8932 305 13.0242" />
+    <path
+      id="underlineReveal-1"
+      class="underline-reveal-1"
+      fill="none"
+      stroke="rgba(91,37,53,1)"
+      stroke-width="2"
+      d="M5 24.2592C26.233 20.2879 47.7083 16.9968 69.135 13.8421C98.0469 9.5853 128.407 4.02322 158.059 5.14674C172.583 5.69708 187.686 8.66104 201.598 11.9696C207.232 13.3093 215.437 14.9471 220.137 18.3619C224.401 21.4596 220.737 25.6575 217.184 27.6168C208.309 32.5097 197.199 34.281 186.698 34.8486C183.159 35.0399 147.197 36.2657 155.105 26.5837C158.11 22.9053 162.993 20.6229 167.764 18.7924C178.386 14.7164 190.115 12.1115 201.624 10.3984C218.367 7.90626 235.528 7.06127 252.521 7.49276C258.455 7.64343 264.389 7.92791 270.295 8.41825C280.321 9.25056 296 10.8932 305 13.0242" />
+  </svg>
+</div>
+<script>
+  (function () {
+    const reveal = document.getElementById("underlineReveal-1");
+    const container = document.querySelector(".underline-container-1");
+    if (!reveal || !container) return;
+
+    const pathLength = reveal.getTotalLength();
+    reveal.style.strokeDasharray = pathLength;
+    reveal.style.strokeDashoffset = pathLength;
+
+    let ticking = false;
+
+    function update() {
+      const rect = container.getBoundingClientRect();
+      const winHeight = window.innerHeight;
+
+      const scrollStart = rect.bottom - winHeight + 100;
+      const scrollEnd = rect.top - 200;
+      const scrollRange = scrollEnd - scrollStart;
+      const currentScroll = -scrollStart;
+
+      let p = currentScroll / scrollRange;
+      if (p < 0) p = 0;
+      if (p > 1) p = 1;
+
+      const drawLength = pathLength * p;
+      const offset = pathLength - drawLength;
+
+      reveal.style.strokeDashoffset = offset;
+
+      ticking = false;
+    }
+
+    update();
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      {passive: true}
+    );
+
+    window.addEventListener("resize", () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    });
+  })();
+</script>

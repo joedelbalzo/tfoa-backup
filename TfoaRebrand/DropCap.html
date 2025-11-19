@@ -1,0 +1,76 @@
+<style>
+  .no-white-space {
+    padding: 0;
+    margin: 0;
+  }
+  .fancy-w {
+    font-size: 4em;
+    font-weight: bold;
+    float: left;
+    margin-right: 8px;
+    margin-top: 0;
+    padding-top: 0;
+    line-height: 0.78;
+    color: #f5f5f5;
+    text-shadow: -1px -1px 0 #5b2535, 1px -1px 0 #5b2535, -1px 1px 0 #5b2535, 1px 1px 0 #5b2535;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+</style>
+
+<h4 class="no-white-space">
+  <span class="fancy-w" id="fancyW">W</span>e believe in finding the right reader for every book through research, audience deep dives,
+  segmentation, case studies, and trendspotting. Each of our campaigns is uniquely crafted with the tactics most likely to reach an author's
+  target audience and convert them to book buyers.
+</h4>
+
+<script>
+  (function () {
+    const w = document.getElementById("fancyW");
+    if (!w) return;
+
+    let ticking = false;
+
+    function update() {
+      const rect = w.getBoundingClientRect();
+      const winHeight = window.innerHeight;
+
+      const scrollStart = rect.bottom - winHeight + 100;
+      const scrollEnd = rect.top - 200;
+      const scrollRange = scrollEnd - scrollStart;
+      const currentScroll = -scrollStart;
+
+      let p = currentScroll / scrollRange;
+      if (p < 0) p = 0;
+      if (p > 1) p = 1;
+
+      // Transition to solid burgundy
+      const r = Math.round(91 + (255 - 91) * (1 - p));
+      const g = Math.round(37 + (255 - 37) * (1 - p));
+      const b = Math.round(53 + (255 - 53) * (1 - p));
+
+      w.style.color = `rgb(${r}, ${g}, ${b})`;
+
+      ticking = false;
+    }
+
+    update();
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      {passive: true}
+    );
+
+    window.addEventListener("resize", () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    });
+  })();
+</script>
