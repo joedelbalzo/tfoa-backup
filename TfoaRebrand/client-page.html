@@ -1,0 +1,550 @@
+<style>
+  .jdb-authors-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+    box-sizing: border-box;
+  }
+
+  .jdb-author-card {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    padding: 1.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .jdb-author-card:hover {
+    background-color: #efc9cb;
+  }
+
+  .jdb-author-card-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+
+  .jdb-author-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .jdb-author-card-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1;
+  }
+
+  .jdb-author-card-content h3 {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .jdb-author-site {
+    margin: 0.25rem 0 0.5rem 0;
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Arial;
+    font-size: 0.85rem;
+    color: #5b2535;
+    text-decoration: none;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .jdb-author-site:hover {
+    text-decoration: underline;
+  }
+
+  .jdb-site-by-tfoa {
+    cursor: pointer;
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Arial;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #555;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .jdb-site-by-tfoa:hover {
+    color: #5b2535;
+  }
+
+  .jdb-author-site-arrow {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  .jdb-popup-icon {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  .jdb-author-card-content h4 {
+    margin: 0 0 0.5rem 0;
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Arial;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .jdb-author-card-content p {
+    margin: 0;
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Arial;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #333;
+    flex-grow: 1;
+  }
+
+  .jdb-screenshot-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .jdb-screenshot-modal.active {
+    display: flex;
+  }
+
+  .jdb-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .jdb-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .jdb-modal-close:hover {
+    background: #efc9cb;
+  }
+
+  .jdb-modal-image {
+    max-width: 100%;
+    max-height: calc(90vh - 4rem);
+    display: block;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    .jdb-authors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .jdb-authors-grid {
+      grid-template-columns: 1fr;
+    }
+    .jdb-modal-content {
+      max-width: 95%;
+    }
+  }
+</style>
+
+<div class="jdb-authors-grid">
+  <!-- MELODY BEATTIE  -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/0f731451-cdf7-4428-805c-bbbe359aa9a2/MB.webp?format=1500w"
+        alt="Author Melody Beattie" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Melody Beattie</h3>
+      <a class="jdb-author-site" href="https://melodybeattie.com" target="_blank" rel="noopener">
+        melodybeattie.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>
+        Social Media &#9679; Newsletter &#9679;
+        <span
+          class="jdb-site-by-tfoa"
+          data-screenshot="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/448f1496-9524-4681-b13d-3ffeefa911e2/MelodyBeattieWebsite.png?format=1500w"
+          >Website<svg
+            class="jdb-popup-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <line x1="9" y1="3" x2="9" y2="21" /></svg
+        ></span>
+      </h4>
+    </div>
+  </div>
+
+  <!-- SWATI HEDGE  -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/ecdf4095-f93a-4a4a-bf16-5746a22054bf/swati-hedge-with-book.jpg?content-type=image%2Fjpeg"
+        alt="Author Swati Hedge" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Swati Hedge</h3>
+      <a class="jdb-author-site" href="https://melodybeattie.com" target="_blank" rel="noopener">
+        melodybeattie.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>
+        Social Media &#9679; Newsletter &#9679;
+        <span
+          class="jdb-site-by-tfoa"
+          data-screenshot="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/448f1496-9524-4681-b13d-3ffeefa911e2/MelodyBeattieWebsite.png?format=1500w"
+          >Website<svg
+            class="jdb-popup-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <line x1="9" y1="3" x2="9" y2="21" /></svg
+        ></span>
+      </h4>
+    </div>
+  </div>
+
+  <!-- DEAD SKY PUBLISHING  -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/78362a71-b89d-4160-a1f9-f934d9ae63eb/DSP-logo.jpg?content-type=image%2Fjpeg"
+        alt="Publishing house Dead Sky Publishing" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Dead Sky Publishing</h3>
+      <a class="jdb-author-site" href="https://melodybeattie.com" target="_blank" rel="noopener">
+        deadskypublishing.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>
+        Social Media &#9679; Newsletter &#9679;
+        <span
+          class="jdb-site-by-tfoa"
+          data-screenshot="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/448f1496-9524-4681-b13d-3ffeefa911e2/MelodyBeattieWebsite.png?format=1500w"
+          >Website<svg
+            class="jdb-popup-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <line x1="9" y1="3" x2="9" y2="21" /></svg
+        ></span>
+      </h4>
+    </div>
+  </div>
+
+  <!-- CURTIS DUFFY and JEREMY WAGNER  -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/5f2a89e9-8565-42a1-95de-b20d6ef9001b/Curtis-Jeremy.jpg?content-type=image%2Fjpeg"
+        alt="Author and Michelin-Starred Chef Curtis Duffy alongside co-writer and Dead Sky Publishing founder Jeremy Wagner" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Chef Curtis Duffy and Jeremy Wagner</h3>
+      <a class="jdb-author-site" href="https://curtisduffy.com" target="_blank" rel="noopener">
+        curtisduffy.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>
+        Social Media &#9679; Brand Strategy &#9679;
+        <span
+          class="jdb-site-by-tfoa"
+          data-screenshot="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/82116724-bcdc-4850-86a8-de7676ef9844/CurtisDuffyWebsite.png?format=1500w"
+          >Website<svg
+            class="jdb-popup-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <line x1="9" y1="3" x2="9" y2="21" /></svg
+        ></span>
+      </h4>
+    </div>
+  </div>
+
+  <!--  YOUR HIDDEN GENIUS -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/e2eeed77-9cf6-4e7a-8ec8-3806c0afa4ee/YourHiddenGeniusCover.jpg?format=500w"
+        alt="Book cover of Your Hidden Genius, written by Betsy Wills and Alex Ellison" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Your Hidden Genius</h3>
+      <a class="jdb-author-site" href="https://yourhiddengenius.com" target="_blank" rel="noopener">
+        yourhiddengenius.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>
+        Social Media &#9679; Brand Strategy &#9679;
+        <span
+          class="jdb-site-by-tfoa"
+          data-screenshot="https://images.squarespace-cdn.com/content/v1/6918d636a252cd1fe0e9c3eb/5e85473d-b401-4977-8c46-4cfc9aed24f9/YourHiddenGeniusWebsite.png?format=1500w"
+          >Website<svg
+            class="jdb-popup-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <line x1="9" y1="3" x2="9" y2="21" /></svg
+        ></span>
+      </h4>
+    </div>
+  </div>
+
+  <!-- LAKSHMI KRISHNAN -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/e820da11-5834-43d2-9e0d-ab39c29d3659/Lakshmi+Krishnan.jpg?content-type=image%2Fjpeg"
+        alt="Author Lakshmi Krishnan" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Lakshmi Krishnan</h3>
+      <a class="jdb-author-site" href="https://lakshmi-krishnan/" target="_blank" rel="noopener">
+        lakshmi-krishnan.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>Social Media &#9679; Newsletter &#9679; Book Tours</h4>
+    </div>
+  </div>
+
+  <!-- BENJAMIN HEROLD -->
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/0ddffebb-dec2-46f3-a8d8-224dec565175/benjamin-herold-author-photo.jpg?content-type=image%2Fjpeg"
+        alt="Author Benjamin Herold" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Benjamin Herold</h3>
+      <a class="jdb-author-site" href="https://benjaminherold.com" target="_blank" rel="noopener">
+        benjaminherold.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>Social Media &#9679; Website &#9679; Something</h4>
+    </div>
+  </div>
+
+  <!-- KATHERINE WELA BOGEN -->
+
+  <div class="jdb-author-card">
+    <div class="jdb-author-card-image">
+      <img
+        src="https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/8c6e8300-6934-4585-b70c-436a1f591fa4/katherine+bogen.jpg?content-type=image%2Fjpeg"
+        alt="Author Katherine Wela Bogen" />
+    </div>
+    <div class="jdb-author-card-content">
+      <h3>Katherine Wela Bogen</h3>
+      <a class="jdb-author-site" href="https://kwbogenbooks.com/" target="_blank" rel="noopener">
+        kwbogenbooks.com
+        <svg
+          class="jdb-author-site-arrow"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+      </a>
+      <h4>Social Media &#9679; Website &#9679; Something</h4>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="jdb-screenshot-modal" id="jdb-screenshot-modal">
+  <div class="jdb-modal-content">
+    <button class="jdb-modal-close" id="jdb-modal-close">&times;</button>
+    <img class="jdb-modal-image" id="jdb-modal-image" src="" alt="Website Screenshot" />
+  </div>
+</div>
+
+<script>
+  (function () {
+    const modal = document.getElementById("jdb-screenshot-modal");
+    const modalImage = document.getElementById("jdb-modal-image");
+    const closeBtn = document.getElementById("jdb-modal-close");
+
+    // Open modal on click
+    document.querySelectorAll(".jdb-site-by-tfoa").forEach((trigger) => {
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        const screenshotUrl = this.getAttribute("data-screenshot");
+        if (screenshotUrl) {
+          modalImage.src = screenshotUrl;
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      });
+    });
+
+    // Close modal
+    function closeModal() {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+
+    // Close on click outside
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on ESC key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  })();
+</script>
