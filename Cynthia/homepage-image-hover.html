@@ -1,0 +1,56 @@
+<!-- The trick here is to have the four images layered so that the 
+ top one has a minor effect while the back one does not move -->
+
+
+<style>
+.image-stack {
+  position: relative;
+  width: 100%;
+  padding-top: 145%;
+  overflow: hidden;
+}
+.layer {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.layer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: all .5s ease;
+}
+.layer-1 { z-index: 1; }
+.layer-2 { z-index: 2; }
+.layer-3 { z-index: 3; }
+.layer-4 { z-index: 4; }
+.image-stack:hover .layer-3 img {
+  transform: scale(1.02);
+  filter: saturate(1.25);
+}
+.image-stack:hover .layer-1 img {
+  filter: saturate(.7) blur(2px);
+}
+.image-stack:hover .layer-2 img {
+  filter: saturate(.75) blur(1px);
+}
+</style>
+
+<div class="image-stack">
+  <div class="layer layer-1">
+    <img src="https://images.squarespace-cdn.com/content/v1/6830d78c6c14af711ed86a18/4ee6d49c-5d07-4b1f-8922-9dc13d48d129/blank-background.png?format=2500w">
+  </div>
+  <div class="layer layer-2">
+    <img src="https://images.squarespace-cdn.com/content/v1/6830d78c6c14af711ed86a18/44aa996f-386b-4a9b-ad25-fa1f79a4f211/Silo-woman_cat.png?format=2500w">
+  </div>
+  <div class="layer layer-3">
+    <img src="https://images.squarespace-cdn.com/content/v1/6830d78c6c14af711ed86a18/66b9ee14-2181-4281-a446-459a12e69211/Silo-woman_no-cat.png?format=2500w">
+  </div>
+  <div class="layer layer-4">
+    <img src="https://images.squarespace-cdn.com/content/v1/6830d78c6c14af711ed86a18/974752bc-1139-4abd-8009-2955e0b4d812/cover-text.png?format=2500w">
+  </div>
+</div>
