@@ -1,0 +1,353 @@
+<!--
+=============================================================
+  SERVICES GRID — Single Code Block
+  The Future of Agency | Services Page
+=============================================================
+
+  OVERVIEW:
+  Card data lives in the `services` array in the <script> below.
+  That is the only thing an editor should ever need to touch.
+
+  EDITING A CARD:
+  Find the object in the `services` array and update any of:
+    - title:   The card heading
+    - tagline: Italic subheading in burgundy (Playfair)
+    - body:    Main description copy
+    - image:   Full URL to the card image
+    - alt:     Image alt text for accessibility/SEO
+    - id:      Unique identifier — used as the HTML id attribute.
+               Use kebab-case, no spaces. Don't duplicate.
+
+  ADDING A CARD:
+  Copy any existing object in the array, paste it in the
+  desired position, and update all fields. The grid and
+  scroll observer will pick it up automatically.
+
+  REMOVING A CARD:
+  Delete the object from the array.
+
+  REORDERING CARDS:
+  Cut and paste objects within the array.
+
+  CARD OBJECT TEMPLATE:
+  ---------------------------------------------------------------
+  {
+    id: "service-your-id-here",
+    title: "Service Title",
+    tagline: "Short tagline goes here.",
+    body: "Body copy describing the service goes here.",
+    image: "https://your-image-url-here.jpg",
+    alt: "Descriptive alt text"
+  },
+  ---------------------------------------------------------------
+
+  SCROLL HIGHLIGHT BEHAVIOR:
+  IntersectionObserver applies .is-focused to the most visible
+  card(s) as the user scrolls.
+  - Desktop (2-col): highlights top 2 most visible cards.
+  - Mobile (1-col):  highlights top 1 most visible card.
+  No changes needed here when adding/removing cards.
+
+  HEADING NOTE:
+  Cards use a .service-card-title div instead of an h4 to avoid
+  Squarespace overriding heading styles.
+
+=============================================================
+-->
+
+<style>
+  .services-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    box-sizing: border-box;
+    opacity: 0;
+  }
+
+  .services-grid.is-ready {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  .service-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: #f5f5f5;
+    box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    transition: transform .28s ease, box-shadow .28s ease, background-color .28s ease;
+    overflow: hidden;
+    outline: 2px solid rgba(239,201,203,.4);
+    box-sizing: border-box;
+  }
+
+  .service-card-image {
+    width: 100%;
+    height: 240px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+  }
+
+  /* Burgundy overlay on card images */
+  .service-card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #5B2535;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .service-card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* Using a div instead of h4 to avoid Squarespace heading style overrides */
+  .service-card-title {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    line-height: 1.25;
+    color: #111;
+    font-weight: 700;
+  }
+
+  /* Italic tagline between title and body copy */
+  .service-tagline {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #5B2535;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .service-card-body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-size: 1rem;
+   
+  }
+
+  /* Focused/highlighted state applied by JS on scroll */
+  .service-card.is-focused {
+    background-color: rgba(239,201,203,.7);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(91,37,53,0.12);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+
+    .service-card-image {
+      height: 200px;
+    }
+  }
+</style>
+
+<div class="services-grid" id="servicesGrid"></div>
+
+<script>
+(() => {
+
+  // =============================================================
+  //  SERVICES DATA
+  //  Edit card content here. See comment block above for full
+  //  instructions on adding, removing, and reordering cards.
+  // =============================================================
+  const services = [
+    {
+      id: "service-author-brand-strategy",
+      title: "Author Brand Strategy",
+      tagline: "Your book is one part of a much bigger story.",
+      body: "Through a bespoke Brand Discovery process, we create a cohesive strategy aligned with each author's mission, values, and messaging. This becomes a clear playbook for the platform and a framework for evaluating all future partnerships, content, and promotions.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/5a2da8d6-5ecc-4452-9d1a-1d44827e6ff6/Author+Brand+Strategy_V2.2.jpg?content-type=image%2Fjpeg",
+      alt: "A person focused on a document, pen in hand, reading, editing, and preparing."
+    },
+    {
+      id: "service-social-media-email",
+      title: "Social Media & Email Marketing Management",
+      tagline: "Consistent presence. Real connection.",
+      body: "We manage author social media and email platforms end-to-end, with as much or as little input as each client prefers. This includes content creation, copywriting, design, and community engagement. Social builds awareness; Email drives sales.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/3f1b888f-fd2d-43ca-93c7-2ae31fd36382/Social+Media+%26+Email+Marketing+Management_V2.jpg?content-type=image%2Fjpeg",
+      alt: "A laptop background image of 'Like' and 'Love' symbols to signify Social Media & Email Marketing Management"
+    },
+    {
+      id: "service-email-newsletter-setup",
+      title: "Email Newsletter Setup",
+      tagline: "Own the audience. Drive sales.",
+      body: "We build and optimize newsletters across platforms like Substack and Beehiiv, including setup, list growth strategy, lead magnets, and foundational content. Email is one of the most reliable ways to reach book-buyers directly today.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/b0e2bda7-110e-4ebe-a968-34f5e11ad372/Email+Newsletter+Setup.jpg?content-type=image%2Fjpeg",
+      alt: "A woman typing on a laptop keyboard"
+    },
+    {
+      id: "service-bookseller-librarian-outreach",
+      title: "Bookseller & Librarian Outreach",
+      tagline: "Get books into the hands that sell them.",
+      body: "We build direct relationships with booksellers, librarians, and key industry partners, including school and library channels. Outreach also includes pitching for specialty retail and subscription box opportunities that drive early visibility, sales, and long-term word-of-mouth.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/f019ca23-1eeb-4785-8773-030521c79060/Bookseller+%26+Librarian+Outreach.jpg?content-type=image%2Fjpeg",
+      alt: "A person standing in the middle of a massive, well stocked bookstore."
+    },
+    {
+      id: "service-publicity-review-campaigns",
+      title: "Publicity & Review Campaigns",
+      tagline: "Credibility, visibility, and conversation.",
+      body: "We secure targeted media, podcast, and review coverage that positions books in targeted, relevant conversations. Our approach is focused and strategic, prioritizing outlets that connect authors with the most relevant audiences.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/3fec67d6-8c42-4da2-b1f2-5d098b5758c7/Publicity+%26+Review+Campaigns2.jpg?content-type=image%2Fjpeg",
+      alt: "Focused on a classic radio microphone with an out of focus poster in the background that just says 'Podcast.'"
+    },
+    {
+      id: "service-events-speaking",
+      title: "Events & Speaking",
+      tagline: "Putting authors in the room with the right audiences.",
+      body: "Tapping into existing communities is one of the most effective ways to reach new readers. We create and manage opportunities ranging from bookstore events and author tours to speaking engagements with organizations, institutions, and conferences.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/5085574c-34f6-44e6-8eb5-b45246156895/Events+%26+Speaking.jpg?content-type=image%2Fjpeg",
+      alt: "A group of young men and women sitting at attention in a bookstore or library, seemingly listening to a guest speaker, lecturer, or reader."
+    },
+    {
+      id: "service-digital-advertising",
+      title: "Digital Advertising",
+      tagline: "Reach the right readers at scale.",
+      body: "We plan and execute digital advertising campaigns designed to expand audience reach and drive purchase intent. From creative to targeting to optimization, every campaign is built to reach the right readers and deliver measurable results.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/3642b829-93ef-48eb-9d93-007926f1669d/Digital+Advertising_V2.jpg?content-type=image%2Fjpeg",
+      alt: "Hands typing at a laptop, where the screen shows several cards for sales and data."
+    },
+    {
+      id: "service-book-club-marketing",
+      title: "Book Club Marketing",
+      tagline: "Turn readers into advocates.",
+      body: "We develop campaigns that drive deep engagement, from creating reading group guides to outreach with national, regional, and grassroots book clubs. These are the readers who recommend books and help them grow.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/3d475950-9482-473e-a084-cdf774949f77/Book+Club+Marketing.jpg?content-type=image%2Fjpeg",
+      alt: "A group of men and women sitting around in a circle on a fancy rug, all reading the same book and chatting with each other."
+    },
+    {
+      id: "service-graphic-design-video",
+      title: "Graphic Design & Video Editing",
+      tagline: "Consistency across every touchpoint.",
+      body: "We create the full suite of campaign assets a book needs, including social graphics, video, retail content, and event materials. Every piece is designed to feel cohesive, polished, and consistent across platforms.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/e81102c1-8095-4b44-bab0-78f52fc64fd7/Graphic+Design+%26+Video+Editing_V2.jpg?content-type=image%2Fjpeg",
+      alt: "A photo of a woman sitting at a multi-screen desktop computer, editing photos and video. Editing sound, color, contrast, and preparing beautiful content for clients."
+    },
+    {
+      id: "service-author-websites",
+      title: "Author Websites & Custom Development",
+      tagline: "A home base built to convert.",
+      body: "We design and build author websites that are clear, strategic, and built to convert. With SEO, analytics, and user experience integrated from the start, each site works to connect books with the right readers and turn interest into action.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/1e44788e-5c3c-45a4-8c89-2535b0410b8a/Author+Websites+%26+Custom+Development_V2.jpg?content-type=image%2Fjpeg",
+      alt: "A desktop and laptop sitting on a desk, with the screen showing a website that the future of agency developed for former client Cynthia St. Aubin"
+    },
+    {
+      id: "service-seo-metadata",
+      title: "SEO & Metadata",
+      tagline: "Be discoverable where it matters.",
+      body: "We connect books to readers through the search terms they are actually using on Amazon, Google, and beyond. This work spans metadata, keyword strategy, and on-site optimization to drive discovery and new audience growth.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/1fcafca4-7790-4b76-a432-188b4b78d73f/SEO+%26+Metadata2.jpg?content-type=image%2Fjpeg",
+      alt: "A closeup of keys on a keyboard in their traditional dark gray color, but with one red button in the middle highlighted red and reads 'SEO'. "
+    },
+    {
+      id: "service-publishing-consulting",
+      title: "Publishing Consulting",
+      tagline: "Big picture strategy for teams building lists.",
+      body: "We partner with small presses, independent publishers, and imprints to develop and refine marketing programs across their lists. This includes positioning, title strategy, campaign structure, and internal systems. The work is bespoke and collaborative, bringing Big 5 experience to teams building scalable, effective marketing programs.",
+      image: "https://images.squarespace-cdn.com/content/63488b7f3ce7637c41dd775c/8d96dbed-a4d8-4da7-aa0d-9ef071dcd8c3/Publishing+Consulting.jpg?content-type=image%2Fjpeg",
+      alt: "Two people sitting with each other, at a desk, with books and pens and laptops sprawled across the desk."
+    }
+  ];
+
+  // =============================================================
+  //  RENDER
+  //  Builds and injects card HTML from the services array above.
+  // =============================================================
+  const grid = document.getElementById('servicesGrid');
+
+  services.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'service-card';
+    card.id = s.id;
+    card.innerHTML = `
+      <div class="service-card-image">
+        <img src="${s.image}" alt="${s.alt}" loading="lazy">
+      </div>
+      <div class="service-card-content">
+        <div class="service-card-title">${s.title}</div>
+        <div class="service-tagline">${s.tagline}</div>
+        <div class="service-card-body">${s.body}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Add .is-ready to trigger the fade-in transition as a single unit,
+  // preventing Squarespace's scroll animation from grabbing individual
+  // elements and animating them independently.
+  setTimeout(() => {
+    grid.classList.add('is-ready');
+  }, 100);
+
+  // =============================================================
+  //  SCROLL HIGHLIGHT (IntersectionObserver)
+  //  Applies .is-focused to the most visible card(s) on scroll.
+  //  No changes needed here when editing the services array.
+  // =============================================================
+  const cards = Array.from(grid.querySelectorAll('.service-card'));
+  const ratios = new Map();
+
+  const applyHighlights = () => {
+    const qualified = [];
+    for (const [el, ratio] of ratios.entries()) {
+      if (ratio >= 0.6) qualified.push({ el, ratio });
+    }
+    qualified.sort((a, b) => b.ratio - a.ratio);
+    cards.forEach(c => c.classList.remove('is-focused'));
+    const highlightCount = window.innerWidth <= 768 ? 1 : 2;
+    qualified.slice(0, highlightCount).forEach(item => item.el.classList.add('is-focused'));
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => ratios.set(e.target, e.intersectionRatio));
+    applyHighlights();
+  }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+
+  cards.forEach(c => {
+    ratios.set(c, 0);
+    observer.observe(c);
+  });
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      observer.disconnect();
+      cards.forEach(c => observer.observe(c));
+    }, 150);
+  }, { passive: true });
+
+})();
+</script>
